@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vibrant Flight — Premium Store (Responsive)</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+
+  <!-- TOP PROMO -->
+  <div class="w-full bg-gradient-to-r from-[#080808] to-[#000] text-xs text-gray-300 py-2">
+    <div class="max-w-screen-xl mx-auto px-4 flex items-center justify-between">
+      <div class="flex gap-3 items-center">
+        <span class="badge">FLAT ₹500 OFF on orders ₹2,000+</span>
+        <span class="badge">FREE SHIPPING over ₹1,999</span>
+      </div>
+      <div class="text-xs hidden sm:block">COD available • 7-day returns • 500+ Reviews</div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header w-full panel">
+    <div class="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="panel logo-panel p-1">
+          <img id="brandLogo" src="../images/logo.jpg" alt="Vibrant Flight" class="w-full h-full object-contain rounded-lg" />
+        </div>
+        <div class="hidden sm:block">
+          <div class="text-2xl font-serif gold-text" style="font-family: 'Playfair Display', serif;">Vibrant Flight</div>
+          <div class="text-xs italic text-gray-400">Elevate Your Journey</div>
+        </div>
+      </div>
+
+      <!-- Center search (hidden on small screens) -->
+      <div class="flex-1 px-6 site-search">
+        <div class="max-w-2xl mx-auto relative">
+          <input id="siteSearch" placeholder="Search products, collections or styles..." class="w-full rounded-full py-3 px-4 panel bg-[rgba(255,255,255,0.03)] text-sm" />
+          <button id="searchBtn" class="absolute right-2 top-1/2 -translate-y-1/2 gold-btn px-4 py-2 rounded-full text-sm">Search</button>
+        </div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="header-actions">
+        <!-- desktop only -->
+        <button id="collectionsBtn" class="panel px-3 py-2 hidden md:inline-flex">Collections ▾</button>
+        <button id="trackBtn" class="panel px-3 py-2 hidden md:inline-flex">Track</button>
+        <button id="loginTop" class="panel px-3 py-2 gold-text hidden md:inline-flex">Login</button>
+
+        <button id="openCart" class="panel px-3 py-2 gold-btn">Cart (<span id="cartCount">0</span>)</button>
+
+        <!-- Mobile hamburger -->
+        <button id="menuBtn" class="md:hidden panel p-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <span class="sr-only">Open menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU (drawer) -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 hidden" aria-hidden="true">
+    <div class="absolute inset-0 bg-black/60" onclick="toggleMobileMenu()" aria-hidden="true"></div>
+    <aside class="absolute top-0 right-0 w-4/5 max-w-sm h-full panel p-6 overflow-auto" role="dialog" aria-modal="true" aria-label="Mobile menu">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-3">
+          <div class="logo-panel p-1"><img src="logo.jpg" alt="logo" onerror="this.src=logoFallback()" class="w-full h-full object-contain rounded-md"></div>
+          <div>
+            <div class="font-semibold">Vibrant Flight</div>
+            <div class="text-xs text-gray-400">Elevate Your Journey</div>
+          </div>
+        </div>
+        <button class="mb-4 text-gray-300" onclick="toggleMobileMenu()" aria-label="Close menu">✕</button>
+      </div>
+
+      <nav class="flex flex-col gap-3" aria-label="Mobile navigation">
+        <a href="#shop" class="py-2">Shop</a>
+        <a href="#offers" class="py-2">Offers</a>
+        <a href="#about" class="py-2">About</a>
+        <a href="#contact" class="py-2">Contact</a>
+        <a href="#testimonials" class="py-2">Testimonials</a>
+
+        <div class="mt-4">
+          <button class="gold-btn w-full py-2 mb-2" onclick="openAuth('login')">Login / Signup</button>
+          <button class="panel w-full py-2" onclick="openTrackMobile()">Track Order</button>
+        </div>
+
+        <div class="mt-6">
+          <div class="text-xs text-gray-400">Follow us</div>
+          <div class="flex gap-2 mt-2">
+            <div class="panel w-10 h-10 flex items-center justify-center rounded-full">ig</div>
+            <div class="panel w-10 h-10 flex items-center justify-center rounded-full">fb</div>
+            <div class="panel w-10 h-10 flex items-center justify-center rounded-full">yt</div>
+          </div>
+        </div>
+      </nav>
+    </aside>
+  </div>
+
+  <!-- COLLECTIONS (hidden panel) -->
+  <div id="collectionsMenu" class="hidden max-w-screen-xl mx-auto px-4 mt-2">
+    <div class="panel p-4 rounded-xl grid grid-cols-1 sm:grid-cols-4 gap-4">
+      <a class="flex gap-3 items-center p-3 rounded-lg" href="#tshirts">
+        <img src="https://images.unsplash.com/photo-1520975910683-9f1ddf7e0b8a?auto=format&fit=crop&w=160&q=60" class="w-20 h-20 rounded-lg object-cover"/>
+        <div><div class="font-semibold">T-Shirts</div><div class="text-xs text-gray-400">Daily essentials</div></div>
+      </a>
+      <a class="flex gap-3 items-center p-3 rounded-lg" href="#shirts">
+        <img src="https://images.unsplash.com/photo-1465381760095-69bdbde6a1c1?auto=format&fit=crop&w=160&q=60" class="w-20 h-20 rounded-lg object-cover"/>
+        <div><div class="font-semibold">Shirts</div><div class="text-xs text-gray-400">Smart & casual</div></div>
+      </a>
+      <a class="flex gap-3 items-center p-3 rounded-lg" href="#bottoms">
+        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=160&q=60" class="w-20 h-20 rounded-lg object-cover"/>
+        <div><div class="font-semibold">Bottoms</div><div class="text-xs text-gray-400">Jeans, chinos</div></div>
+      </a>
+      <a class="flex gap-3 items-center p-3 rounded-lg" href="#accessories">
+        <img src="https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?auto=format&fit=crop&w=160&q=60" class="w-20 h-20 rounded-lg object-cover"/>
+        <div><div class="font-semibold">Accessories</div><div class="text-xs text-gray-400">Caps & more</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-screen-xl mx-auto px-4 mt-6 pb-20 relative">
+
+    <!-- REFLECTION (follows cursor on desktop) -->
+    <div id="reflect" class="reflect" aria-hidden="true"></div>
+
+    <!-- HERO -->
+    <section class="panel rounded-2xl overflow-hidden relative">
+      <picture>
+        <source media="(min-width:1024px)" srcset="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1600&q=80" />
+        <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1000&q=80" alt="hero" class="w-full h-64 md:h-96 object-cover"/>
+      </picture>
+
+      <div class="absolute inset-0 flex flex-col justify-center p-6 md:p-12" style="background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.55));">
+        <div class="max-w-xl">
+          <h1 class="text-3xl md:text-5xl font-serif gold-text" style="font-family: 'Playfair Display', serif;">Vibrant Flight</h1>
+          <p class="italic text-gray-300 mt-1">Elevate Your Journey</p>
+          <p class="mt-4 text-sm text-gray-300">Premium fabrics, thoughtful details and modern silhouettes — curated for the journey ahead.</p>
+          <div class="mt-4 flex gap-3">
+            <a href="#shop" class="gold-btn px-5 py-2 rounded-md">Shop Now</a>
+            <a href="#offers" class="panel px-4 py-2 rounded-md">View Offers</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY ROW -->
+    <section class="mt-6">
+      <div class="grid grid-cols-5 gap-3">
+        <div class="flex flex-col items-center text-center">
+          <div class="w-14 h-14 rounded-full panel flex items-center justify-center gold-text font-semibold">T</div>
+          <small class="mt-1 text-xs text-gray-400">T-shirts</small>
+        </div>
+        <div class="flex flex-col items-center text-center">
+          <div class="w-14 h-14 rounded-full panel flex items-center justify-center gold-text font-semibold">S</div>
+          <small class="mt-1 text-xs text-gray-400">Shirts</small>
+        </div>
+        <div class="flex flex-col items-center text-center">
+          <div class="w-14 h-14 rounded-full panel flex items-center justify-center gold-text font-semibold">T</div>
+          <small class="mt-1 text-xs text-gray-400">Trousers</small>
+        </div>
+        <div class="flex flex-col items-center text-center">
+          <div class="w-14 h-14 rounded-full panel flex items-center justify-center gold-text font-semibold">C</div>
+          <small class="mt-1 text-xs text-gray-400">Chinos</small>
+        </div>
+        <div class="flex flex-col items-center text-center">
+          <div class="w-14 h-14 rounded-full panel flex items-center justify-center gold-text font-semibold">J</div>
+          <small class="mt-1 text-xs text-gray-400">Jeans</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTER BAR -->
+    <section class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="flex gap-3 items-center">
+        <div class="panel px-3 py-2 rounded-md text-sm">
+          Category:
+          <select id="filterCategory" class="bg-transparent outline-none ml-2 text-sm">
+            <option value="">All</option>
+            <option value="tshirt">T-Shirts</option>
+            <option value="shirt">Shirts</option>
+            <option value="jeans">Jeans</option>
+            <option value="chinos">Chinos</option>
+            <option value="accessory">Accessory</option>
+          </select>
+        </div>
+        <div class="panel px-3 py-2 rounded-md text-sm">
+          Sort:
+          <select id="sortBy" class="bg-transparent outline-none ml-2 text-sm">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex gap-3 items-center">
+        <div class="text-sm text-gray-400">Showing <span id="showCount">0</span> products</div>
+        <div class="panel px-3 py-2 rounded-md text-sm">Price:
+          <select id="priceFilter" class="bg-transparent ml-2">
+            <option value="any">All</option>
+            <option value="0-699">Under ₹699</option>
+            <option value="700-999">₹700 - ₹999</option>
+            <option value="1000-9999">₹1000+</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+<!-- PRODUCTS GRID -->
+<div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+
+  <!-- Product 1 -->
+  <div class="panel p-3 rounded-xl flex flex-col">
+    <img src="../images/f1.jpg" alt="Classic Cotton T-shirt" class="w-full h-56 object-cover rounded-lg" />
+    <div class="mt-3 font-semibold">Classic Cotton T-shirt</div>
+    <div class="text-sm text-gray-400">Soft-touch premium cotton tee</div>
+    <div class="flex items-center justify-between mt-2">
+      <div>
+        <div class="text-lg font-bold gold-text">₹799</div>fghjkl;
+        <div class="text-xs line-through text-gray-400">₹999</div>
+      </div>
+      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 2 -->
+  <div class="panel p-3 rounded-xl flex flex-col">
+    <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc0f99?auto=format&fit=crop&w=600&q=80" alt="Oxford Slim Shirt" class="w-full h-56 object-cover rounded-lg" />
+    <div class="mt-3 font-semibold">Oxford Slim Shirt</div>
+    <div class="text-sm text-gray-400">Smart casual wear for all seasons</div>
+    <div class="flex items-center justify-between mt-2">
+      <div>
+        <div class="text-lg font-bold gold-text">₹1,299</div>
+        <div class="text-xs line-through text-gray-400">₹1,599</div>
+      </div>
+      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 3 -->
+  <div class="panel p-3 rounded-xl flex flex-col">
+    <img src="https://images.unsplash.com/photo-1618354691373-60d1d0e3c1f3?auto=format&fit=crop&w=600&q=80" alt="Denim Jeans" class="w-full h-56 object-cover rounded-lg" />
+    <div class="mt-3 font-semibold">Denim Jeans</div>
+    <div class="text-sm text-gray-400">Classic fit stretchable jeans</div>
+    <div class="flex items-center justify-between mt-2">
+      <div>
+        <div class="text-lg font-bold gold-text">₹1,799</div>
+        <div class="text-xs line-through text-gray-400">₹2,199</div>
+      </div>
+      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 4 -->
+  <div class="panel p-3 rounded-xl flex flex-col">
+    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3a1c?auto=format&fit=crop&w=600&q=80" alt="Chino Pants" class="w-full h-56 object-cover rounded-lg" />
+    <div class="mt-3 font-semibold">Chino Pants</div>
+    <div class="text-sm text-gray-400">Lightweight, perfect for work or casual</div>
+    <div class="flex items-center justify-between mt-2">
+      <div>
+        <div class="text-lg font-bold gold-text">₹1,499</div>
+        <div class="text-xs line-through text-gray-400">₹1,899</div>
+      </div>
+      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 5 -->
+  <div class="panel p-3 rounded-xl flex flex-col">
+    <img src="https://images.unsplash.com/photo-1618354821279-8d1bdbd04e25?auto=format&fit=crop&w=600&q=80" alt="Hooded Sweatshirt" class="w-full h-56 object-cover rounded-lg" />
+    <div class="mt-3 font-semibold">Hooded Sweatshirt</div>
+    <div class="text-sm text-gray-400">Warm fleece hoodie with minimalist design</div>
+    <div class="flex items-center justify-between mt-2">
+      <div>
+        <div class="text-lg font-bold gold-text">₹1,999</div>
+        <div class="text-xs line-through text-gray-400">₹2,499</div>
+      </div>
+      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 6 -->
+  <div class="panel p-3 rounded-xl flex flex-col">
+    <img src="https://images.unsplash.com/photo-1592878904946-bc7c72e90a39?auto=format&fit=crop&w=600&q=80" alt="Leather Belt" class="w-full h-56 object-cover rounded-lg" />
+    <div class="mt-3 font-semibold">Leather Belt</div>
+    <div class="text-sm text-gray-400">Premium full-grain leather</div>
+    <div class="flex items-center justify-between mt-2">
+      <div>
+        <div class="text-lg font-bold gold-text">₹999</div>
+        <div class="text-xs line-through text-gray-400">₹1,299</div>
+      </div>
+      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 7 -->
+  <div class="panel p-3 rounded-xl flex flex-col">
+    <img src="https://images.unsplash.com/photo-1629940968399-bc721d7b7f82?auto=format&fit=crop&w=600&q=80" alt="Casual Sneakers" class="w-full h-56 object-cover rounded-lg" />
+    <div class="mt-3 font-semibold">Casual Sneakers</div>
+    <div class="text-sm text-gray-400">Comfortable everyday wear</div>
+    <div class="flex items-center justify-between mt-2">
+      <div>
+        <div class="text-lg font-bold gold-text">₹2,499</div>
+        <div class="text-xs line-through text-gray-400">₹2,999</div>
+      </div>
+      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 8 -->
+  <div class="panel p-3 rounded-xl flex flex-col">
+    <img src="https://images.unsplash.com/photo-1621622444584-6c7c3d47a9e4?auto=format&fit=crop&w=600&q=80" alt="Cotton Cap" class="w-full h-56 object-cover rounded-lg" />
+    <div class="mt-3 font-semibold">Cotton Cap</div>
+    <div class="text-sm text-gray-400">Adjustable breathable summer cap</div>
+    <div class="flex items-center justify-between mt-2">
+      <div>
+        <div class="text-lg font-bold gold-text">₹699</div>
+        <div class="text-xs line-through text-gray-400">₹899</div>
+      </div>
+      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
+    </div>
+  </div>
+
+</div>
+
+</section>
+
+<!-- OFFERS / BUNDLES -->
+<section id="offers" class="mt-10 grid md:grid-cols-3 gap-4">
+  <div class="panel p-5 rounded-xl text-center">
+    <div class="text-sm text-gray-400">T-shirt + Jeans Combo</div>
+    <div class="text-2xl font-bold gold-text mt-1">₹2,299</div>
+  </div>
+  <div class="panel p-5 rounded-xl text-center">
+    <div class="text-sm text-gray-400">Shirt + Chinos Set</div>
+    <div class="text-2xl font-bold gold-text mt-1">₹2,699</div>
+  </div>
+  <div class="panel p-5 rounded-xl text-center">
+    <div class="text-sm text-gray-400">Hoodie + Cap Bundle</div>
+    <div class="text-2xl font-bold gold-text mt-1">₹2,499</div>
+  </div>
+</section>
+
+
+    <!-- ABOUT & FEATURES -->
+    <section id="about" class="mt-10 grid md:grid-cols-2 gap-6">
+      <div class="panel p-6 rounded-2xl">
+        <h3 class="text-2xl font-bold gold-text">About Vibrant Flight</h3>
+        <p class="text-gray-300 mt-2">We source premium electronics and accessories with a focus on design, durability and user experience.</p>
+        <ul class="mt-4 space-y-2 text-sm text-gray-300">
+          <li>• Official store warranty</li>
+          <li>• Premium packaging</li>
+          <li>• 7-day return policy</li>
+        </ul>
+      </div>
+      <div class="panel p-6 rounded-2xl">
+        <h4 class="text-xl font-semibold gold-text">Why choose us</h4>
+        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="panel p-3 rounded-lg">
+            <div class="font-semibold">Genuine Products</div>
+            <div class="text-xs text-gray-300">Direct from verified vendors.</div>
+          </div>
+          <div class="panel p-3 rounded-lg">
+            <div class="font-semibold">Secure Payments</div>
+            <div class="text-xs text-gray-300">Encrypted payments & multiple options.</div>
+          </div>
+          <div class="panel p-3 rounded-lg">
+            <div class="font-semibold">Fast Delivery</div>
+            <div class="text-xs text-gray-300">Priority shipping available.</div>
+          </div>
+          <div class="panel p-3 rounded-lg">
+            <div class="font-semibold">Customer Support</div>
+            <div class="text-xs text-gray-300">24/7 support for premium orders.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="mt-10 panel p-6 md:p-10 rounded-2xl">
+      <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-8">
+        <div class="md:w-1/2 space-y-4">
+          <h3 class="text-2xl md:text-3xl font-bold gold-text">Contact Us</h3>
+          <p class="text-gray-300">Questions about orders, returns, or collaborations? Reach out — we reply within 24 hours.</p>
+          <div class="space-y-3 text-sm text-gray-300">
+            <div><strong>Customer Support:</strong> <a href="mailto:support@vibrantflight.com" class="gold-text">support@vibrantflight.com</a></div>
+            <div><strong>Business / Wholesale:</strong> <a href="mailto:business@vibrantflight.com" class="gold-text">business@vibrantflight.com</a></div>
+            <div><strong>Phone:</strong> +91-XXXXXXXXXX (Mon–Fri, 10:00–18:00)</div>
+            <div><strong>Address:</strong> 123 Fashion Street, Your City, State — PIN</div>
+          </div>
+        </div>
+
+        <div class="md:w-1/2">
+          <h4 class="text-lg font-semibold gold-text">Send Us a Message</h4>
+          <form id="contactForm" class="mt-4 grid gap-3" autocomplete="on">
+            <input name="name" id="contact_name" class="p-3 rounded-md bg-transparent border border-white/10 text-sm" placeholder="Full Name" required />
+            <input name="email" id="contact_email" type="email" class="p-3 rounded-md bg-transparent border border-white/10 text-sm" placeholder="Email Address" required />
+            <input name="mobile" id="contact_mobile" type="tel" pattern="[0-9]{10}" class="p-3 rounded-md bg-transparent border border-white/10 text-sm" placeholder="Mobile Number (10 digits)" />
+            <textarea name="message" id="contact_msg" rows="4" class="p-3 rounded-md bg-transparent border border-white/10 text-sm" placeholder="Message (include order ID if any)" required></textarea>
+
+            <div class="flex items-center gap-3">
+              <button type="submit" class="gold-btn py-2 rounded-md" id="contactSubmit">Send Message</button>
+              <button type="button" id="contactClear" class="panel py-2 rounded-md">Clear</button>
+            </div>
+
+            <div id="contactNotice" class="text-sm text-gray-300 hidden">Thanks — your message has been received. We'll reply within 24 hours.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="mt-10">
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="panel p-6 rounded-xl">
+          <div class="text-6xl text-white/10">“</div>
+          <div class="mt-2">The premium phone was worth every rupee — the packaging and delivery were superb.</div>
+          <div class="mt-4 text-sm text-gray-400">— Rohan</div>
+        </div>
+        <div class="panel p-6 rounded-xl">
+          <div class="text-6xl text-white/10">“</div>
+          <div class="mt-2">Customer service helped me through setup and warranty registration.</div>
+          <div class="mt-4 text-sm text-gray-400">— Priya</div>
+        </div>
+        <div class="panel p-6 rounded-xl">
+          <div class="text-6xl text-white/10">“</div>
+          <div class="mt-2">Fast shipping and genuine accessories. Highly trustworthy.</div>
+          <div class="mt-4 text-sm text-gray-400">— Salman</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="mt-10 panel p-6 rounded-xl">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <div class="font-semibold">Join our newsletter</div>
+          <div class="text-sm text-gray-300">Get early access to drops and exclusive offers.</div>
+        </div>
+        <form id="newsletterForm" class="flex gap-2">
+          <input id="newsletterEmail" type="email" required placeholder="Your email" class="p-2 rounded-md bg-transparent border border-white/10" />
+          <button class="gold-btn px-4 py-2 rounded-md">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="max-w-screen-xl mx-auto px-4 mt-12 pb-12 text-gray-400">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <div class="text-lg font-semibold gold-text">Vibrant Flight</div>
+          <div class="text-sm italic">Elevate Your Journey</div>
+          <p class="text-sm mt-3 text-gray-400">Premium gadgets & accessories — curated essentials & seasonal drops.</p>
+        </div>
+        <div>
+          <div class="font-semibold mb-2">Customer</div>
+          <ul class="text-sm space-y-1">
+            <li>Track Order</li>
+            <li>Returns & Refund</li>
+            <li>Shipping policy</li>
+            <li>Warranty</li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-2">Contact</div>
+          <div class="text-sm">hello@vibrantflight.com</div>
+          <div class="mt-2 text-sm">Follow</div>
+          <div class="flex gap-2 mt-2">
+            <div class="panel w-10 h-10 flex items-center justify-center rounded-full">ig</div>
+            <div class="panel w-10 h-10 flex items-center justify-center rounded-full">fb</div>
+            <div class="panel w-10 h-10 flex items-center justify-center rounded-full">yt</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 text-xs text-gray-500 text-center">© 2025 Vibrant Flight — All rights reserved</div>
+    </footer>
+  </main>
+
+  <!-- CART SIDEBAR -->
+  <aside id="cartSidebar" class="fixed right-0 top-0 h-full w-[92vw] sm:w-96 transform translate-x-full transition z-50" aria-hidden="true">
+    <div class="h-full panel p-5 flex flex-col">
+      <div class="flex items-center justify-between">
+        <h4 class="font-semibold">Your Cart</h4>
+        <button id="closeCart" class="text-gray-300">✕</button>
+      </div>
+      <div id="cartItems" class="mt-4 flex-1 overflow-auto no-scrollbar"></div>
+      <div class="mt-4 border-t pt-4">
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-gray-400">Subtotal</div>
+          <div id="cartSub" class="font-semibold">₹0</div>
+        </div>
+        <div class="mt-3 grid grid-cols-2 gap-2">
+          <button id="checkoutBtn" class="gold-btn py-2 rounded-md">Checkout</button>
+          <button id="clearCart" class="panel py-2 rounded-md">Clear</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- QUICK VIEW MODAL -->
+  <div id="quickModal" class="hidden fixed inset-0 z-60 flex items-center justify-center modal-backdrop p-4" aria-hidden="true">
+    <div class="panel w-full max-w-3xl p-6 rounded-xl relative modal-inner" role="dialog" aria-modal="true">
+      <button onclick="closeQuick()" class="absolute top-4 right-6 text-gray-300">×</button>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div><img id="quickImg" src="" class="w-full h-72 object-cover rounded-lg" alt="product image" /></div>
+        <div>
+          <h3 id="quickName" class="text-2xl font-semibold"></h3>
+          <div class="flex items-center gap-3 mt-2">
+            <div id="quickPrice" class="text-xl font-bold gold-text"></div>
+            <div id="quickOld" class="text-sm line-through text-gray-400"></div>
+            <div id="quickStock" class="text-sm panel px-2 py-1 rounded-full">In stock</div>
+          </div>
+          <p id="quickDesc" class="mt-3 text-sm text-gray-300"></p>
+          <div class="mt-4 flex items-center gap-2">
+            <input id="quickQty" type="number" value="1" min="1" class="w-20 p-2 rounded-md bg-[rgba(255,255,255,0.02)]" />
+            <button id="quickAdd" class="gold-btn px-4 py-2 rounded-md">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTH MODAL -->
+  <div id="authModal" class="hidden fixed inset-0 z-70 flex items-start md:items-center justify-center modal-backdrop p-4" aria-hidden="true">
+    <div class="panel p-6 w-full max-w-md rounded-xl relative modal-inner" role="dialog" aria-modal="true">
+      <button onclick="closeAuth()" class="absolute top-3 right-4 text-gray-300">×</button>
+      <div id="authInner"></div>
+    </div>
+  </div>
+
+  <!-- TRACK MODAL -->
+  <div id="trackModal" class="hidden fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300" aria-hidden="true">
+    <div class="panel w-11/12 sm:w-96 p-6 relative modal-inner" role="dialog" aria-modal="true">
+      <button id="closeTrack" class="absolute top-3 right-3 text-gray-300 hover:text-white transition text-xl font-bold">&times;</button>
+
+      <h2 class="text-2xl font-semibold mb-4 text-center gold-text">Track Your Order</h2>
+      <form id="trackForm" class="space-y-4">
+        <div>
+          <label class="block text-sm mb-1">Order ID</label>
+          <input id="trackOrderId" type="text" placeholder="Enter your order ID" class="w-full p-2 rounded-md bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-1 focus:ring-yellow-500" />
+        </div>
+        <div>
+          <label class="block text-sm mb-1">Email</label>
+          <input id="trackEmail" type="email" placeholder="Enter your email" class="w-full p-2 rounded-md bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-1 focus:ring-yellow-500" />
+        </div>
+        <button type="submit" class="gold-btn w-full py-2 mt-3 rounded-md font-semibold text-black hover:opacity-90 transition">Track Order</button>
+      </form>
+    </div>
+  </div>
+   <script src="../js/script.js"></script>
+</body>
+</html>
