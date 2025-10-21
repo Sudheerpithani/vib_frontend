@@ -1,79 +1,784 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vibrant Flight — Premium Store (Responsive)</title>
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="../css/style.css">
-
-</head>
-<body>
-
-  <!-- TOP PROMO -->
-  <div class="w-full bg-gradient-to-r from-[#080808] to-[#000] text-xs text-gray-300 py-2">
-    <div class="max-w-screen-xl mx-auto px-4 flex items-center justify-between">
-      <div class="flex gap-3 items-center">
-        <span class="badge">FLAT ₹500 OFF on orders ₹2,000+</span>
-        <span class="badge">FREE SHIPPING over ₹1,999</span>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Vibrant Flight — Elavate Your Journey</title>
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .searchdiv {
+        position: absolute;
+        top: 75%;
+        right: 15%;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP PROMO -->
+    <div
+      class="w-full bg-gradient-to-r from-[#080808] to-[#000] text-xs text-gray-300 py-2"
+    >
+      <div
+        class="max-w-screen-xl mx-auto px-4 flex items-center justify-between"
+      >
+        <div class="offer-banner">
+          <div class="offer-text">
+            FLAT ₹500 OFF on orders ₹2,000+ • FREE SHIPPING over ₹1,999 • COD
+            available • 7-day returns • 500+ Reviews
+          </div>
+        </div>
       </div>
-      <div class="text-xs hidden sm:block">COD available • 7-day returns • 500+ Reviews</div>
     </div>
-  </div>
 
-  <!-- HEADER -->
-  <header class="site-header w-full panel">
-    <div class="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <div class="panel logo-panel p-1">
-          <img id="brandLogo" src="../images/logo.jpg" alt="Vibrant Flight" class="w-full h-full object-contain rounded-lg" />
+    <!-- HEADER -->
+    <header
+      class="relative z-50 w-full bg-black/70 backdrop-blur-md border-b border-white/10"
+    >
+      <div
+        class="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-3 md:py-5"
+      >
+        <!-- Logo -->
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <img
+            src="/images/logo.jpg"
+            alt="Vibrant Flight Logo"
+            class="w-9 h-9 md:w-10 md:h-10 rounded-md border border-[#D4AF37]/50 shadow-lg"
+          />
         </div>
-        <div class="hidden sm:block">
-          <div class="text-2xl font-serif gold-text" style="font-family: 'Playfair Display', serif;">Vibrant Flight</div>
-          <div class="text-xs italic text-gray-400">Elevate Your Journey</div>
+
+        <!-- Brand -->
+        <h1
+          class="flex-1 text-center text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-100 to-amber-400 text-2xl sm:text-3xl md:text-4xl font-[Cinzel] tracking-[0.2em] drop-shadow-[0_0_12px_rgba(212,175,55,0.35)] animate-title-shimmer"
+        >
+          Vibrant Flight
+        </h1>
+
+        <!-- Icons -->
+        <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+          <!-- Menu Search Icon -->
+          <!-- 🔍 MENU SEARCH ICON (top navigation) -->
+          <!-- 🔍 MENU SEARCH ICON -->
+          <button
+            id="menuSearchBtn"
+            class="p-2 flex items-center justify-center rounded-lg transition hover:bg-white/10"
+            title="Search"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6 text-gray-300 transition hover:text-[#D4AF37]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-5.5-5.5m2-5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+              />
+            </svg>
+          </button>
+
+          <!-- 🌐 FULL-WIDTH SEARCH BAR (GLASS EFFECT) -->
+          <div
+            id="searchWrapper"
+            class="hidden fixed top-0 left-0 w-full flex justify-center bg-black/70 backdrop-blur-xl border-b border-white/20 shadow-lg opacity-0 -translate-y-5 transition-all duration-500 ease-in-out z-50 py-4 px-6"
+          >
+            <div class="relative w-full max-w-2xl flex items-center gap-3">
+              <!-- Search Field -->
+              <input
+                id="searchInput"
+                type="text"
+                placeholder="Search premium products..."
+                class="flex-1 bg-white/10 border border-white/20 rounded-2xl px-5 py-3 text-base text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:bg-white/20 transition-all duration-300"
+              />
+              <!-- Search Icon -->
+              <button
+                id="searchBtn"
+                class="p-3 flex items-center justify-center hover:bg-white/10 rounded-full shadow-md transition"
+                title="Search"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </button>
+              <!-- Close Button -->
+              <button
+                id="closeSearch"
+                class="px-3 py-2 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 hover:text-yellow-400 transition"
+                title="Close search"
+              >
+                ✖
+              </button>
+
+              <!-- Suggestions Box (directly under input) -->
+              <div
+                id="suggestionsBox"
+                class="absolute hidden top-full left-0 mt-3 w-full bg-black/90 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg text-sm text-gray-200 z-50 overflow-hidden"
+              ></div>
+            </div>
+          </div>
+
+          <!-- <button
+            id="searchBtn"
+            class="p-2 hover:bg-white/10 rounded-lg transition"
+            title="Search"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 text-gray-300 hover:text-[#D4AF37]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button> -->
+          <button
+            id="cartBtn"
+            class="relative p-2 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#caa530] hover:brightness-110 transition shadow-md"
+            title="Cart"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 text-black"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.293 2.293a1 1 0 00.707 1.707H17"
+              />
+            </svg>
+            <span
+              id="cartCount"
+              class="absolute -top-1 -right-1 bg-black text-[#D4AF37] text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center"
+              >0</span
+            >
+          </button>
+          <button
+            id="menuBtn"
+            class="p-2 rounded-lg hover:bg-white/10 transition"
+            title="Menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6 text-gray-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
         </div>
       </div>
+    </header>
 
-      <!-- Center search (hidden on small screens) -->
-      <div class="flex-1 px-6 site-search">
-        <div class="max-w-2xl mx-auto relative">
-          <input id="siteSearch" placeholder="Search products, collections or styles..." class="w-full rounded-full py-3 px-4 panel bg-[rgba(255,255,255,0.03)] text-sm" />
-          <button id="searchBtn" class="absolute right-2 top-1/2 -translate-y-1/2 gold-btn px-4 py-2 rounded-full text-sm">Search</button>
-        </div>
+    <script>
+            const menuSearchBtn = document.getElementById("menuSearchBtn");
+            const searchWrapper = document.getElementById("searchWrapper");
+            const searchInput = document.getElementById("searchInput");
+            const searchBtn = document.getElementById("searchBtn");
+            const closeSearch = document.getElementById("closeSearch");
+            const suggestionsBox = document.getElementById("suggestionsBox");
+
+            let searchData = [];
+            let debounceTimer;
+      const API_BASE =
+        window.location.hostname === "localhost"
+          ? "http://localhost:5000"
+          : "https://vib-backend.onrender.com"; // 👈 your Render backend URL
+
+      const res = await fetch(`${API_BASE}/api/products`);
+            // ✅ Load product data
+            async function loadSearchData() {
+              try {
+                const res = await fetch(`${API_BASE}/api/products`);
+                searchData = await res.json();
+              } catch (err) {
+                console.error("❌ Error loading search data:", err);
+              }
+            }
+            loadSearchData();
+
+            // ✅ Open / Close animations
+            function openSearch() {
+              searchWrapper.classList.remove("hidden");
+              setTimeout(() => {
+                searchWrapper.classList.remove("opacity-0", "-translate-y-5");
+                searchWrapper.classList.add("opacity-100", "translate-y-0");
+                searchInput.focus();
+              }, 10);
+            }
+
+            function closeSearchBar() {
+              searchWrapper.classList.remove("opacity-100", "translate-y-0");
+              searchWrapper.classList.add("opacity-0", "-translate-y-5");
+              setTimeout(() => {
+                searchWrapper.classList.add("hidden");
+                suggestionsBox.classList.add("hidden");
+                searchInput.value = "";
+              }, 400);
+            }
+
+            menuSearchBtn?.addEventListener("click", openSearch);
+            closeSearch.addEventListener("click", closeSearchBar);
+
+            // ✅ Debounced search for performance
+            searchInput.addEventListener("input", () => {
+              clearTimeout(debounceTimer);
+              debounceTimer = setTimeout(() => showSuggestions(), 250);
+            });
+
+            function showSuggestions() {
+              const query = searchInput.value.trim().toLowerCase();
+              if (!query) {
+                suggestionsBox.classList.add("hidden");
+                return;
+              }
+
+              const matches = searchData
+                .filter((p) => p.name.toLowerCase().includes(query))
+                .slice(0, 6);
+
+              if (matches.length === 0) {
+                suggestionsBox.innerHTML = `<div class="px-4 py-3 text-center text-gray-400">No products found</div>`;
+                suggestionsBox.classList.remove("hidden");
+                return;
+              }
+
+              suggestionsBox.innerHTML = matches
+                .map(
+                  (p) => `
+                <div class="flex items-center px-4 py-2 hover:bg-white/10 cursor-pointer transition-all">
+                  <img src="${p.image || "/default.jpg"}" alt="${
+                    p.name
+                  }" class="w-10 h-10 object-cover rounded-lg mr-3 border border-white/10" />
+                  <div class="flex-1">
+                    <div class="font-medium">${p.name}</div>
+                    <div class="text-gray-400 text-xs">${p.category || ""}</div>
+                  </div>
+                </div>
+              `
+                )
+                .join("");
+
+              suggestionsBox.classList.remove("hidden");
+
+              // Click to go to product
+              Array.from(suggestionsBox.children).forEach((child, i) => {
+                child.addEventListener("click", () => {
+                  searchInput.value = matches[i].name;
+                  suggestionsBox.classList.add("hidden");
+                  goToProduct(matches[i]);
+                });
+              });
+            }
+
+            // ✅ Search via Enter key or button
+            searchInput.addEventListener("keydown", (e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                goToSearch();
+              }
+            });
+            searchBtn.addEventListener("click", goToSearch);
+
+            // ✅ Hide suggestions when clicking outside
+            document.addEventListener("click", (e) => {
+              if (!searchWrapper.contains(e.target)) {
+                suggestionsBox.classList.add("hidden");
+              }
+            });
+
+            // ✅ Redirect to search results page
+            function goToSearch() {
+              const query = searchInput.value.trim();
+              if (query) {
+                window.location.href = `products.html?search=${encodeURIComponent(
+                  query
+                )}`;
+              }
+            }
+
+            // ✅ Go directly to product page (real e-commerce UX)
+            function goToProduct(product) {
+              if (product._id) {
+                window.location.href = `product.html?id=${product._id}`;
+              } else {
+                goToSearch();
+              }
+            }
+    </script>
+    <!-- MOBILE MENU -->
+    <div
+      id="mobileMenu"
+      class="fixed top-0 right-0 w-64 h-full bg-black/95 border-l border-[#D4AF37]/30 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-[60]"
+    >
+      <div
+        class="flex justify-between items-center p-4 border-b border-[#D4AF37]/20"
+      >
+        <h2 class="text-[#D4AF37] text-lg font-semibold tracking-wide">Menu</h2>
+        <button
+          id="closeMenu"
+          class="text-gray-300 hover:text-[#D4AF37] transition"
+        >
+          &times;
+        </button>
       </div>
+      <nav class="flex flex-col p-4 text-gray-300 space-y-4 text-base">
+        <a
+          href="index.html"
+          class="hover:text-[#D4AF37] hover:pl-2 transition-all"
+          >Home</a
+        >
+        <a
+          href="products.html"
+          class="hover:text-[#D4AF37] hover:pl-2 transition-all"
+          >Shop</a
+        >
+        <a
+          href="admin.html"
+          class="hover:text-[#D4AF37] hover:pl-2 transition-all"
+          >Admin</a
+        >
+        <a
+          href="#anything"
+          class="hover:text-[#D4AF37] hover:pl-2 transition-all"
+          >Contact</a
+        >
+        <!-- <hr class="border-t border-[#D4AF37]/20 my-2" /> -->
+        <button
+          id="authBtn"
+          class="gold-btn py-2 rounded-md text-black font-semibold hover:opacity-90 transition"
+        >
+          Login / Signup
+        </button>
+        <button
+          onclick="toast('Track Order!', { type: 'success' })"
+          class="panel py-2 rounded-md text-sm hover:text-[#D4AF37] transition hidden"
+        >
+          Track Order
+        </button>
+      </nav>
+    </div>
 
-      <!-- ACTIONS -->
-      <div class="header-actions">
-        <!-- desktop only -->
-        <button id="collectionsBtn" class="panel px-3 py-2 hidden md:inline-flex">Collections ▾</button>
-        <button id="trackBtn" class="panel px-3 py-2 hidden md:inline-flex">Track</button>
-        <button id="loginTop" class="panel px-3 py-2 gold-text hidden md:inline-flex">Login</button>
-
-        <button id="openCart" class="panel px-3 py-2 gold-btn">Cart (<span id="cartCount">0</span>)</button>
-
-        <!-- Mobile hamburger -->
-        <button id="menuBtn" class="md:hidden panel p-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-          <span class="sr-only">Open menu</span>
+    <!-- AUTH MODAL -->
+    <div
+      id="authModal"
+      class="fixed inset-0 bg-black/70 flex justify-center items-center hidden z-50"
+    >
+      <div id="authInner" class="panel p-8 relative w-80 max-w-full">
+        <button
+          onclick="closeAuth()"
+          class="absolute top-3 right-3 text-gray-300 hover:text-[#D4AF37] text-xl"
+        >
+          &times;
         </button>
       </div>
     </div>
-  </header>
 
-  <!-- MOBILE MENU (drawer) -->
-  <div id="mobileMenu" class="fixed inset-0 z-40 hidden" aria-hidden="true">
+    <script>
+      const API_URL = `${API_BASE}/api/auth`;
+
+      /* ===== LOGIN / SIGNUP / FORGOT HTML TEMPLATES ===== */
+      function loginHTML() {
+        return `
+          <div class="relative p-4">
+            <button type="button"
+              class="absolute top-0 right-0 text-gray-400 hover:text-white text-lg font-bold"
+              onclick="closeAuth()">✖</button>
+            <h3 class="text-xl font-semibold mb-2 text-center gold-text">Login</h3>
+            <form id="loginFormPop" class="grid gap-3">
+              <input id="popEmail" type="email" placeholder="Email" class="p-3 rounded-md bg-transparent border border-white/10 w-full" required />
+              <div class="relative">
+                <input id="popPw" type="password" placeholder="Password" class="p-3 rounded-md bg-transparent border border-white/10 w-full" required />
+                <button type="button" id="showLoginPw" class="absolute right-3 top-3 text-sm text-gray-300">Show</button>
+              </div>
+              <button type="submit" class="gold-btn py-2 rounded-md">Sign In</button>
+            </form>
+            <div class="text-sm mt-2 flex justify-between">
+              <button id="toSignupFromLogin" type="button" class="text-[var(--gold)] underline">Create account</button>
+              <button id="toForgotFromLogin" type="button" class="text-gray-400 underline">Forgot?</button>
+            </div>
+          </div>
+        `;
+      }
+
+      function signupHTML() {
+        return `
+          <div class="relative p-4">
+            <button type="button"
+              class="absolute top-0 right-0 text-gray-400 hover:text-white text-lg font-bold"
+              onclick="closeAuth()">✖</button>
+            <h3 class="text-xl font-semibold mb-2 text-center gold-text">Create account</h3>
+            <form id="signupFormPop" class="grid gap-3">
+              <input id="popName" placeholder="Full name" class="p-3 rounded-md bg-transparent border border-white/10 w-full" required />
+              <input id="popEmailS" type="email" placeholder="Email" class="p-3 rounded-md bg-transparent border border-white/10 w-full" required />
+              <input id="popMobile" placeholder="Mobile number (10 digits)" class="p-3 rounded-md bg-transparent border border-white/10 w-full" required />
+              <div class="relative">
+                <input id="popPwS" type="password" placeholder="Password (min 8 chars)" class="p-3 rounded-md bg-transparent border border-white/10 w-full" required />
+                <button type="button" id="showSignupPw" class="absolute right-3 top-3 text-sm text-gray-300">Show</button>
+              </div>
+              <div class="relative">
+                <input id="popPwS2" type="password" placeholder="Confirm password" class="p-3 rounded-md bg-transparent border border-white/10 w-full" required />
+                <button type="button" id="showSignupPw2" class="absolute right-3 top-3 text-sm text-gray-300">Show</button>
+              </div>
+              <button type="submit" class="gold-btn py-2 rounded-md">Create Account</button>
+            </form>
+            <div class="text-sm mt-2 text-center">
+              <button id="toLoginFromSignup" type="button" class="text-gray-400 underline">Already have an account? Sign in</button>
+            </div>
+          </div>
+        `;
+      }
+
+      function forgotHTML() {
+        return `
+          <div class="relative p-4">
+            <button type="button"
+              class="absolute top-0 right-0 text-gray-400 hover:text-white text-lg font-bold"
+              onclick="closeAuth()">✖</button>
+            <h3 class="text-xl font-semibold mb-2 text-center gold-text">Reset password</h3>
+            <form id="forgotFormPop" class="grid gap-3">
+              <input id="popForgotEmail" type="email" placeholder="Registered email" class="p-3 rounded-md bg-transparent border border-white/10 w-full" required />
+              <button type="submit" class="gold-btn py-2 rounded-md">Send Reset Link</button>
+            </form>
+            <div class="text-sm mt-2 text-center">
+              <button id="toLoginFromForgot" type="button" class="text-gray-400 underline">Back to sign in</button>
+            </div>
+          </div>
+        `;
+      }
+
+      /* ===== SHOW MODAL ===== */
+      function openAuth(mode = "login") {
+        document.getElementById("authModal").classList.remove("hidden");
+        if (mode === "login") showLoginModal();
+        if (mode === "signup") showSignupModal();
+        if (mode === "forgot") showForgotModal();
+      }
+
+      function closeAuth() {
+        document.getElementById("authModal").classList.add("hidden");
+      }
+
+      /* ===== LOGIN MODAL ===== */
+      function showLoginModal() {
+        const authInner = document.getElementById("authInner");
+        authInner.innerHTML = loginHTML();
+
+        // Password toggle
+        document.getElementById("showLoginPw").addEventListener("click", () => {
+          const pw = document.getElementById("popPw");
+          pw.type = pw.type === "password" ? "text" : "password";
+        });
+
+        // Form submit
+        document
+          .getElementById("loginFormPop")
+          .addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = document.getElementById("popEmail").value.trim();
+            const password = document.getElementById("popPw").value.trim();
+            if (!email || !password)
+              return toast("❌ Email and password are required.", {
+                type: "error",
+              });
+
+            let data; // ✅ define outside try block
+
+            try {
+              const res = await fetch(`${API_URL}/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+              });
+
+              const text = await res.text();
+              try {
+                data = JSON.parse(text);
+              } catch {
+                console.error("❌ Invalid JSON:", text);
+                throw new Error("Server returned invalid JSON");
+              }
+
+              if (!res.ok) throw new Error(data.message || "Login failed");
+
+              // Save JWT and user info
+              localStorage.setItem("user", JSON.stringify(data.user));
+              localStorage.setItem("token", data.token);
+
+              // call from buynow producthtml
+              const params = new URLSearchParams(window.location.search);
+              const authMode = params.get("auth");
+              if (authMode) {
+                openAuth(authMode);
+              }
+              closeAuth();
+              updateUserUI();
+              toast("✅ " + data.message, { type: "success" });
+
+              if (data.user.role === "admin")
+                window.location.href = "admin.html";
+            } catch (err) {
+              // ✅ use optional chaining so it doesn’t crash
+              toast("❌ " + (data?.message || err.message), { type: "error" });
+              console.error(err);
+            }
+          });
+
+        // Switch modals
+        document
+          .getElementById("toSignupFromLogin")
+          .addEventListener("click", showSignupModal);
+        document
+          .getElementById("toForgotFromLogin")
+          .addEventListener("click", showForgotModal);
+      }
+
+      /* ===== SIGNUP MODAL ===== */
+      function showSignupModal() {
+        const authInner = document.getElementById("authInner");
+        authInner.innerHTML = signupHTML();
+
+        // Password toggles
+        document
+          .getElementById("showSignupPw")
+          .addEventListener("click", () => {
+            const pw = document.getElementById("popPwS");
+            pw.type = pw.type === "password" ? "text" : "password";
+          });
+        document
+          .getElementById("showSignupPw2")
+          .addEventListener("click", () => {
+            const pw = document.getElementById("popPwS2");
+            pw.type = pw.type === "password" ? "text" : "password";
+          });
+
+        document
+          .getElementById("signupFormPop")
+          .addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const name = document.getElementById("popName").value.trim();
+            const email = document.getElementById("popEmailS").value.trim();
+            const mobile = document.getElementById("popMobile").value.trim();
+            const pw = document.getElementById("popPwS").value;
+            const pw2 = document.getElementById("popPwS2").value;
+            if (!name || !email || !mobile || !pw || !pw2)
+              return toast("Please fill all fields.", { type: "warning" });
+            if (pw !== pw2)
+              return toast("Passwords do not match!", { type: "error" });
+
+            try {
+              const res = await fetch(`${API_URL}/register`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, mobile, password: pw }),
+              });
+              const data = await res.json();
+              if (!res.ok) throw new Error(data.message || "Signup failed");
+
+              toast("✅ Account created successfully!", { type: "success" });
+              showLoginModal();
+            } catch (err) {
+              toast("❌ " + err.message, { type: "error" });
+              console.error(err);
+            }
+          });
+
+        document
+          .getElementById("toLoginFromSignup")
+          .addEventListener("click", showLoginModal);
+      }
+
+      /* ===== FORGOT MODAL ===== */
+      function showForgotModal() {
+        const authInner = document.getElementById("authInner");
+        authInner.innerHTML = forgotHTML(); // dynamic HTML
+
+        document
+          .getElementById("forgotFormPop")
+          .addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = document
+              .getElementById("popForgotEmail")
+              .value.trim();
+            if (!email)
+              return toast("Please enter your registered email.", {
+                type: "error",
+              });
+
+            try {
+              const res = await fetch(`${API_URL}/forgot`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email }),
+              });
+              const data = await res.json();
+              if (!res.ok) throw new Error(data.message || "Failed");
+
+              toast("✅ " + data.message, { type: "success" });
+              showLoginModal(); // go back to login
+            } catch (err) {
+              toast("❌ " + err.message, { type: "error" });
+              console.error(err);
+            }
+          });
+
+        document
+          .getElementById("toLoginFromForgot")
+          .addEventListener("click", showLoginModal);
+      }
+
+      /* ===== UPDATE MENU WITH USER ===== */
+      function updateUserUI() {
+        const menu = document.getElementById("mobileMenu");
+        if (!menu) return setTimeout(updateUserUI, 100);
+
+        const authBtn = document.getElementById("authBtn");
+        const user = JSON.parse(localStorage.getItem("user"));
+        const existing = document.getElementById("userBox");
+        const existingLogout = document.getElementById("logoutSection");
+
+        if (existing) existing.remove();
+        if (existingLogout) existingLogout.remove();
+
+        const nav = menu.querySelector("nav");
+
+        document.getElementById("checkoutBtn").addEventListener("click", () => {
+          if (!user) {
+            openAuth();
+          }
+          window.location.href = "order1.html";
+        });
+
+        if (user) {
+          if (authBtn) authBtn.style.display = "none";
+
+          // Remove existing user box & logout if they exist (to avoid duplicates)
+          document.getElementById("userBox")?.remove();
+          document.getElementById("logoutSection")?.remove();
+
+          // Create user welcome box (top)
+          const userBox = document.createElement("div");
+          userBox.id = "userBox";
+          userBox.className =
+            "flex items-center justify-between border-b border-[#D4AF37]/20 pb-3 mb-3";
+
+          userBox.innerHTML = `
+          <div class="flex items-center space-x-3">
+            <img src="${
+              user.avatar ||
+              "https://cdn-icons-png.flaticon.com/512/847/847969.png"
+            }"
+              alt="User Avatar"
+              class="w-10 h-10 rounded-full border border-[#D4AF37]/30 object-cover" />
+            <div>
+              <p class="text-[#D4AF37] text-sm font-semibold">👋 Welcome, ${
+                user.name
+              }</p>
+              ${
+                user.role === "admin"
+                  ? `<p class="text-[10px] text-red-400 font-semibold">[ADMIN]</p>`
+                  : ""
+              }
+            </div>
+          </div>
+        `;
+
+          // Insert at top of <nav>
+          nav.prepend(userBox);
+
+          // ===== Admin-specific actions =====
+          const adminLink = document.querySelector('a[href="admin.html"]');
+          if (user.role === "admin") {
+            if (adminLink) adminLink.style.display = "block";
+          } else {
+            if (adminLink) adminLink.style.display = "none";
+          }
+
+          // ===== Logout section =====
+          const logoutDiv = document.createElement("div");
+          logoutDiv.id = "logoutSection";
+          logoutDiv.className =
+            "flex justify-center mt-4 border-t border-[#D4AF37]/20 pt-3";
+          logoutDiv.innerHTML = `
+          <button id="logoutBtn"
+            class="px-4 py-2 w-full bg-[#D4AF37]/10 text-[#D4AF37] text-sm rounded-lg border border-[#D4AF37]/30 hover:bg-[#D4AF37]/20 hover:text-white transition duration-200">
+            Logout
+          </button>
+        `;
+          nav.appendChild(logoutDiv);
+
+          // ===== Logout functionality =====
+          document.getElementById("logoutBtn").addEventListener("click", () => {
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
+            updateUserUI();
+            toast("You’ve been logged out.", { type: "info" });
+          });
+        } else {
+          // If no user logged in
+          if (authBtn) authBtn.style.display = "block";
+
+          // Hide admin link from guests
+          const adminLink = document.querySelector('a[href="admin.html"]');
+          if (adminLink) adminLink.style.display = "none";
+        }
+      }
+
+      /* ===== INIT ===== */
+      document.addEventListener("DOMContentLoaded", () => {
+        updateUserUI();
+        document
+          .getElementById("authBtn")
+          .addEventListener("click", () => openAuth("login"));
+      });
+    </script>
+
+    <!-- MOBILE MENU -->
+    <!-- <div id="mobileMenu" class="fixed inset-0 z-40 hidden" aria-hidden="true">
     <div class="absolute inset-0 bg-black/60" onclick="toggleMobileMenu()" aria-hidden="true"></div>
     <aside class="absolute top-0 right-0 w-4/5 max-w-sm h-full panel p-6 overflow-auto" role="dialog" aria-modal="true" aria-label="Mobile menu">
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center gap-3">
-          <div class="logo-panel p-1"><img src="logo.jpg" alt="logo" onerror="this.src=logoFallback()" class="w-full h-full object-contain rounded-md"></div>
+          <div class="logo-panel p-1"><img src="images/logo.jpg" alt="logo" onerror="this.src=logoFallback()" class="w-full h-full object-contain rounded-md"></div>
           <div>
             <div class="font-semibold">Vibrant Flight</div>
             <div class="text-xs text-gray-400">Elevate Your Journey</div>
@@ -104,459 +809,1061 @@
         </div>
       </nav>
     </aside>
-  </div>
+  </div> -->
 
-  <!-- COLLECTIONS (hidden panel) -->
-  <div id="collectionsMenu" class="hidden max-w-screen-xl mx-auto px-4 mt-2">
-    <div class="panel p-4 rounded-xl grid grid-cols-1 sm:grid-cols-4 gap-4">
-      <a class="flex gap-3 items-center p-3 rounded-lg" href="#tshirts">
-        <img src="https://images.unsplash.com/photo-1520975910683-9f1ddf7e0b8a?auto=format&fit=crop&w=160&q=60" class="w-20 h-20 rounded-lg object-cover"/>
-        <div><div class="font-semibold">T-Shirts</div><div class="text-xs text-gray-400">Daily essentials</div></div>
-      </a>
-      <a class="flex gap-3 items-center p-3 rounded-lg" href="#shirts">
-        <img src="https://images.unsplash.com/photo-1465381760095-69bdbde6a1c1?auto=format&fit=crop&w=160&q=60" class="w-20 h-20 rounded-lg object-cover"/>
-        <div><div class="font-semibold">Shirts</div><div class="text-xs text-gray-400">Smart & casual</div></div>
-      </a>
-      <a class="flex gap-3 items-center p-3 rounded-lg" href="#bottoms">
-        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=160&q=60" class="w-20 h-20 rounded-lg object-cover"/>
-        <div><div class="font-semibold">Bottoms</div><div class="text-xs text-gray-400">Jeans, chinos</div></div>
-      </a>
-      <a class="flex gap-3 items-center p-3 rounded-lg" href="#accessories">
-        <img src="https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?auto=format&fit=crop&w=160&q=60" class="w-20 h-20 rounded-lg object-cover"/>
-        <div><div class="font-semibold">Accessories</div><div class="text-xs text-gray-400">Caps & more</div></div>
-      </a>
-    </div>
-  </div>
-
-  <!-- MAIN -->
-  <main class="max-w-screen-xl mx-auto px-4 mt-6 pb-20 relative">
-
-    <!-- REFLECTION (follows cursor on desktop) -->
-    <div id="reflect" class="reflect" aria-hidden="true"></div>
-
-    <!-- HERO -->
-    <section class="panel rounded-2xl overflow-hidden relative">
-      <picture>
-        <source media="(min-width:1024px)" srcset="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1600&q=80" />
-        <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1000&q=80" alt="hero" class="w-full h-64 md:h-96 object-cover"/>
-      </picture>
-
-      <div class="absolute inset-0 flex flex-col justify-center p-6 md:p-12" style="background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.55));">
-        <div class="max-w-xl">
-          <h1 class="text-3xl md:text-5xl font-serif gold-text" style="font-family: 'Playfair Display', serif;">Vibrant Flight</h1>
-          <p class="italic text-gray-300 mt-1">Elevate Your Journey</p>
-          <p class="mt-4 text-sm text-gray-300">Premium fabrics, thoughtful details and modern silhouettes — curated for the journey ahead.</p>
-          <div class="mt-4 flex gap-3">
-            <a href="#shop" class="gold-btn px-5 py-2 rounded-md">Shop Now</a>
-            <a href="#offers" class="panel px-4 py-2 rounded-md">View Offers</a>
+    <!-- COLLECTIONS MENU -->
+    <div id="collectionsMenu" class="hidden max-w-screen-xl mx-auto px-4 mt-2">
+      <div class="panel p-4 rounded-xl grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <a class="flex gap-3 items-center p-3 rounded-lg" href="#tshirts">
+          <img
+            src="https://images.unsplash.com/photo-1520975910683-9f1ddf7e0b8a?auto=format&fit=crop&w=160&q=60"
+            class="w-20 h-20 rounded-lg object-cover"
+          />
+          <div>
+            <div class="font-semibold">T-Shirts</div>
+            <div class="text-xs text-gray-400">Daily essentials</div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CATEGORY ROW -->
-    <section class="mt-6">
-      <div class="grid grid-cols-5 gap-3">
-        <div class="flex flex-col items-center text-center">
-          <div class="w-14 h-14 rounded-full panel flex items-center justify-center gold-text font-semibold">T</div>
-          <small class="mt-1 text-xs text-gray-400">T-shirts</small>
-        </div>
-        <div class="flex flex-col items-center text-center">
-          <div class="w-14 h-14 rounded-full panel flex items-center justify-center gold-text font-semibold">S</div>
-          <small class="mt-1 text-xs text-gray-400">Shirts</small>
-        </div>
-        <div class="flex flex-col items-center text-center">
-          <div class="w-14 h-14 rounded-full panel flex items-center justify-center gold-text font-semibold">T</div>
-          <small class="mt-1 text-xs text-gray-400">Trousers</small>
-        </div>
-        <div class="flex flex-col items-center text-center">
-          <div class="w-14 h-14 rounded-full panel flex items-center justify-center gold-text font-semibold">C</div>
-          <small class="mt-1 text-xs text-gray-400">Chinos</small>
-        </div>
-        <div class="flex flex-col items-center text-center">
-          <div class="w-14 h-14 rounded-full panel flex items-center justify-center gold-text font-semibold">J</div>
-          <small class="mt-1 text-xs text-gray-400">Jeans</small>
-        </div>
-      </div>
-    </section>
-
-    <!-- FILTER BAR -->
-    <section class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <div class="flex gap-3 items-center">
-        <div class="panel px-3 py-2 rounded-md text-sm">
-          Category:
-          <select id="filterCategory" class="bg-transparent outline-none ml-2 text-sm">
-            <option value="">All</option>
-            <option value="tshirt">T-Shirts</option>
-            <option value="shirt">Shirts</option>
-            <option value="jeans">Jeans</option>
-            <option value="chinos">Chinos</option>
-            <option value="accessory">Accessory</option>
-          </select>
-        </div>
-        <div class="panel px-3 py-2 rounded-md text-sm">
-          Sort:
-          <select id="sortBy" class="bg-transparent outline-none ml-2 text-sm">
-            <option value="featured">Featured</option>
-            <option value="price-asc">Price: Low → High</option>
-            <option value="price-desc">Price: High → Low</option>
-          </select>
-        </div>
-      </div>
-      <div class="flex gap-3 items-center">
-        <div class="text-sm text-gray-400">Showing <span id="showCount">0</span> products</div>
-        <div class="panel px-3 py-2 rounded-md text-sm">Price:
-          <select id="priceFilter" class="bg-transparent ml-2">
-            <option value="any">All</option>
-            <option value="0-699">Under ₹699</option>
-            <option value="700-999">₹700 - ₹999</option>
-            <option value="1000-9999">₹1000+</option>
-          </select>
-        </div>
-      </div>
-    </section>
-
-<!-- PRODUCTS GRID -->
-<div id="productsGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-
-  <!-- Product 1 -->
-  <div class="panel p-3 rounded-xl flex flex-col">
-    <img src="../images/f1.jpg" alt="Classic Cotton T-shirt" class="w-full h-56 object-cover rounded-lg" />
-    <div class="mt-3 font-semibold">Classic Cotton T-shirt</div>
-    <div class="text-sm text-gray-400">Soft-touch premium cotton tee</div>
-    <div class="flex items-center justify-between mt-2">
-      <div>
-        <div class="text-lg font-bold gold-text">₹799</div>fghjkl;
-        <div class="text-xs line-through text-gray-400">₹999</div>
-      </div>
-      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
-    </div>
-  </div>
-
-  <!-- Product 2 -->
-  <div class="panel p-3 rounded-xl flex flex-col">
-    <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc0f99?auto=format&fit=crop&w=600&q=80" alt="Oxford Slim Shirt" class="w-full h-56 object-cover rounded-lg" />
-    <div class="mt-3 font-semibold">Oxford Slim Shirt</div>
-    <div class="text-sm text-gray-400">Smart casual wear for all seasons</div>
-    <div class="flex items-center justify-between mt-2">
-      <div>
-        <div class="text-lg font-bold gold-text">₹1,299</div>
-        <div class="text-xs line-through text-gray-400">₹1,599</div>
-      </div>
-      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
-    </div>
-  </div>
-
-  <!-- Product 3 -->
-  <div class="panel p-3 rounded-xl flex flex-col">
-    <img src="https://images.unsplash.com/photo-1618354691373-60d1d0e3c1f3?auto=format&fit=crop&w=600&q=80" alt="Denim Jeans" class="w-full h-56 object-cover rounded-lg" />
-    <div class="mt-3 font-semibold">Denim Jeans</div>
-    <div class="text-sm text-gray-400">Classic fit stretchable jeans</div>
-    <div class="flex items-center justify-between mt-2">
-      <div>
-        <div class="text-lg font-bold gold-text">₹1,799</div>
-        <div class="text-xs line-through text-gray-400">₹2,199</div>
-      </div>
-      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
-    </div>
-  </div>
-
-  <!-- Product 4 -->
-  <div class="panel p-3 rounded-xl flex flex-col">
-    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3a1c?auto=format&fit=crop&w=600&q=80" alt="Chino Pants" class="w-full h-56 object-cover rounded-lg" />
-    <div class="mt-3 font-semibold">Chino Pants</div>
-    <div class="text-sm text-gray-400">Lightweight, perfect for work or casual</div>
-    <div class="flex items-center justify-between mt-2">
-      <div>
-        <div class="text-lg font-bold gold-text">₹1,499</div>
-        <div class="text-xs line-through text-gray-400">₹1,899</div>
-      </div>
-      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
-    </div>
-  </div>
-
-  <!-- Product 5 -->
-  <div class="panel p-3 rounded-xl flex flex-col">
-    <img src="https://images.unsplash.com/photo-1618354821279-8d1bdbd04e25?auto=format&fit=crop&w=600&q=80" alt="Hooded Sweatshirt" class="w-full h-56 object-cover rounded-lg" />
-    <div class="mt-3 font-semibold">Hooded Sweatshirt</div>
-    <div class="text-sm text-gray-400">Warm fleece hoodie with minimalist design</div>
-    <div class="flex items-center justify-between mt-2">
-      <div>
-        <div class="text-lg font-bold gold-text">₹1,999</div>
-        <div class="text-xs line-through text-gray-400">₹2,499</div>
-      </div>
-      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
-    </div>
-  </div>
-
-  <!-- Product 6 -->
-  <div class="panel p-3 rounded-xl flex flex-col">
-    <img src="https://images.unsplash.com/photo-1592878904946-bc7c72e90a39?auto=format&fit=crop&w=600&q=80" alt="Leather Belt" class="w-full h-56 object-cover rounded-lg" />
-    <div class="mt-3 font-semibold">Leather Belt</div>
-    <div class="text-sm text-gray-400">Premium full-grain leather</div>
-    <div class="flex items-center justify-between mt-2">
-      <div>
-        <div class="text-lg font-bold gold-text">₹999</div>
-        <div class="text-xs line-through text-gray-400">₹1,299</div>
-      </div>
-      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
-    </div>
-  </div>
-
-  <!-- Product 7 -->
-  <div class="panel p-3 rounded-xl flex flex-col">
-    <img src="https://images.unsplash.com/photo-1629940968399-bc721d7b7f82?auto=format&fit=crop&w=600&q=80" alt="Casual Sneakers" class="w-full h-56 object-cover rounded-lg" />
-    <div class="mt-3 font-semibold">Casual Sneakers</div>
-    <div class="text-sm text-gray-400">Comfortable everyday wear</div>
-    <div class="flex items-center justify-between mt-2">
-      <div>
-        <div class="text-lg font-bold gold-text">₹2,499</div>
-        <div class="text-xs line-through text-gray-400">₹2,999</div>
-      </div>
-      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
-    </div>
-  </div>
-
-  <!-- Product 8 -->
-  <div class="panel p-3 rounded-xl flex flex-col">
-    <img src="https://images.unsplash.com/photo-1621622444584-6c7c3d47a9e4?auto=format&fit=crop&w=600&q=80" alt="Cotton Cap" class="w-full h-56 object-cover rounded-lg" />
-    <div class="mt-3 font-semibold">Cotton Cap</div>
-    <div class="text-sm text-gray-400">Adjustable breathable summer cap</div>
-    <div class="flex items-center justify-between mt-2">
-      <div>
-        <div class="text-lg font-bold gold-text">₹699</div>
-        <div class="text-xs line-through text-gray-400">₹899</div>
-      </div>
-      <button class="gold-btn px-3 py-1 rounded-md text-sm">Add</button>
-    </div>
-  </div>
-
-</div>
-
-</section>
-
-<!-- OFFERS / BUNDLES -->
-<section id="offers" class="mt-10 grid md:grid-cols-3 gap-4">
-  <div class="panel p-5 rounded-xl text-center">
-    <div class="text-sm text-gray-400">T-shirt + Jeans Combo</div>
-    <div class="text-2xl font-bold gold-text mt-1">₹2,299</div>
-  </div>
-  <div class="panel p-5 rounded-xl text-center">
-    <div class="text-sm text-gray-400">Shirt + Chinos Set</div>
-    <div class="text-2xl font-bold gold-text mt-1">₹2,699</div>
-  </div>
-  <div class="panel p-5 rounded-xl text-center">
-    <div class="text-sm text-gray-400">Hoodie + Cap Bundle</div>
-    <div class="text-2xl font-bold gold-text mt-1">₹2,499</div>
-  </div>
-</section>
-
-
-    <!-- ABOUT & FEATURES -->
-    <section id="about" class="mt-10 grid md:grid-cols-2 gap-6">
-      <div class="panel p-6 rounded-2xl">
-        <h3 class="text-2xl font-bold gold-text">About Vibrant Flight</h3>
-        <p class="text-gray-300 mt-2">We source premium electronics and accessories with a focus on design, durability and user experience.</p>
-        <ul class="mt-4 space-y-2 text-sm text-gray-300">
-          <li>• Official store warranty</li>
-          <li>• Premium packaging</li>
-          <li>• 7-day return policy</li>
-        </ul>
-      </div>
-      <div class="panel p-6 rounded-2xl">
-        <h4 class="text-xl font-semibold gold-text">Why choose us</h4>
-        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div class="panel p-3 rounded-lg">
-            <div class="font-semibold">Genuine Products</div>
-            <div class="text-xs text-gray-300">Direct from verified vendors.</div>
+        </a>
+        <a class="flex gap-3 items-center p-3 rounded-lg" href="#shirts">
+          <img
+            src="https://images.unsplash.com/photo-1465381760095-69bdbde6a1c1?auto=format&fit=crop&w=160&q=60"
+            class="w-20 h-20 rounded-lg object-cover"
+          />
+          <div>
+            <div class="font-semibold">Shirts</div>
+            <div class="text-xs text-gray-400">Smart & casual</div>
           </div>
-          <div class="panel p-3 rounded-lg">
-            <div class="font-semibold">Secure Payments</div>
-            <div class="text-xs text-gray-300">Encrypted payments & multiple options.</div>
+        </a>
+        <a class="flex gap-3 items-center p-3 rounded-lg" href="#bottoms">
+          <img
+            src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=160&q=60"
+            class="w-20 h-20 rounded-lg object-cover"
+          />
+          <div>
+            <div class="font-semibold">Bottoms</div>
+            <div class="text-xs text-gray-400">Jeans, chinos</div>
           </div>
-          <div class="panel p-3 rounded-lg">
-            <div class="font-semibold">Fast Delivery</div>
-            <div class="text-xs text-gray-300">Priority shipping available.</div>
+        </a>
+        <a class="flex gap-3 items-center p-3 rounded-lg" href="#accessories">
+          <img
+            src="https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?auto=format&fit=crop&w=160&q=60"
+            class="w-20 h-20 rounded-lg object-cover"
+          />
+          <div>
+            <div class="font-semibold">Accessories</div>
+            <div class="text-xs text-gray-400">Caps & more</div>
           </div>
-          <div class="panel p-3 rounded-lg">
-            <div class="font-semibold">Customer Support</div>
-            <div class="text-xs text-gray-300">24/7 support for premium orders.</div>
-          </div>
-        </div>
+        </a>
       </div>
-    </section>
+    </div>
 
-    <!-- CONTACT -->
-    <section id="contact" class="mt-10 panel p-6 md:p-10 rounded-2xl">
-      <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-8">
-        <div class="md:w-1/2 space-y-4">
-          <h3 class="text-2xl md:text-3xl font-bold gold-text">Contact Us</h3>
-          <p class="text-gray-300">Questions about orders, returns, or collaborations? Reach out — we reply within 24 hours.</p>
-          <div class="space-y-3 text-sm text-gray-300">
-            <div><strong>Customer Support:</strong> <a href="mailto:support@vibrantflight.com" class="gold-text">support@vibrantflight.com</a></div>
-            <div><strong>Business / Wholesale:</strong> <a href="mailto:business@vibrantflight.com" class="gold-text">business@vibrantflight.com</a></div>
-            <div><strong>Phone:</strong> +91-XXXXXXXXXX (Mon–Fri, 10:00–18:00)</div>
-            <div><strong>Address:</strong> 123 Fashion Street, Your City, State — PIN</div>
-          </div>
+    <main class="max-w-screen-xl mx-auto px-4 mt-6 pb-20 relative">
+      <div id="reflect" class="reflect" aria-hidden="true"></div>
+
+      <!-- HERO --><!-- HERO CAROUSEL -->
+      <section
+        id="heroCarousel"
+        class="relative w-full overflow-hidden rounded-2xl mt-4"
+      >
+        <!-- Slide 1 -->
+        <div class="carousel-slide active">
+          <a href="./products.html">
+            <img
+              src="/images/f9.jpg"
+              alt="Vibrant Flight Collection"
+              class="w-full h-[500px] object-cover cursor-pointer"
+            />
+          </a>
         </div>
 
-        <div class="md:w-1/2">
-          <h4 class="text-lg font-semibold gold-text">Send Us a Message</h4>
-          <form id="contactForm" class="mt-4 grid gap-3" autocomplete="on">
-            <input name="name" id="contact_name" class="p-3 rounded-md bg-transparent border border-white/10 text-sm" placeholder="Full Name" required />
-            <input name="email" id="contact_email" type="email" class="p-3 rounded-md bg-transparent border border-white/10 text-sm" placeholder="Email Address" required />
-            <input name="mobile" id="contact_mobile" type="tel" pattern="[0-9]{10}" class="p-3 rounded-md bg-transparent border border-white/10 text-sm" placeholder="Mobile Number (10 digits)" />
-            <textarea name="message" id="contact_msg" rows="4" class="p-3 rounded-md bg-transparent border border-white/10 text-sm" placeholder="Message (include order ID if any)" required></textarea>
+        <!-- Slide 2 -->
+        <div class="carousel-slide">
+          <a href="./products.html">
+            <img
+              src="/images/f11.jpg"
+              alt="Streetwear Collection"
+              class="w-full h-[500px] object-cover cursor-pointer"
+            />
+          </a>
+        </div>
 
-            <div class="flex items-center gap-3">
-              <button type="submit" class="gold-btn py-2 rounded-md" id="contactSubmit">Send Message</button>
-              <button type="button" id="contactClear" class="panel py-2 rounded-md">Clear</button>
+        <!-- Slide 3 -->
+        <div class="carousel-slide">
+          <a href="./products.html">
+            <img
+              src="/images/f9.jpg"
+              alt="Modern Style"
+              class="w-full h-[500px] object-cover cursor-pointer"
+            />
+          </a>
+        </div>
+
+        <!-- Dots -->
+        <div
+          id="carouselDots"
+          class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+        >
+          <span
+            class="dot w-3 h-3 rounded-full bg-gray-400 cursor-pointer"
+          ></span>
+          <span
+            class="dot w-3 h-3 rounded-full bg-gray-400 cursor-pointer"
+          ></span>
+          <span
+            class="dot w-3 h-3 rounded-full bg-gray-400 cursor-pointer"
+          ></span>
+        </div>
+      </section>
+
+      <!-- NEW DROP / ANNOUNCEMENT -->
+      <section class="mt-8 text-center">
+        <div class="panel inline-block px-6 py-3">
+          <span class="font-semibold gold-text">DROP II LIVE NOW</span>
+          <a href="./products.html" class="ml-4 underline">View All</a>
+        </div>
+      </section>
+
+      <!-- CATEGORY ROW -->
+      <!-- ================= CATEGORY GRID ================= -->
+      <section id="categories" class="mt-12">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+          <!-- T-Shirts -->
+          <a
+            href="products.html?category=tshirt"
+            class="group flex flex-col items-center text-center cursor-pointer transition-transform hover:scale-105"
+          >
+            <div
+              class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#D4AF37] shadow-md"
+            >
+              <img
+                src="https://assets.ajio.com/medias/sys_master/root/20240920/wv4r/66ed61ec260f9c41e8173c64/-473Wx593H-700412130-white-MODEL.jpg"
+                alt="T-Shirts"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
             </div>
+            <small class="mt-2 text-sm text-gray-300 group-hover:text-[#D4AF37]"
+              >T-Shirts</small
+            >
+          </a>
 
-            <div id="contactNotice" class="text-sm text-gray-300 hidden">Thanks — your message has been received. We'll reply within 24 hours.</div>
-          </form>
+          <!-- Shirts -->
+          <a
+            href="products.html?category=shirt"
+            class="group flex flex-col items-center text-center cursor-pointer transition-transform hover:scale-105"
+          >
+            <div
+              class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#D4AF37] shadow-md"
+            >
+              <img
+                src="https://cottonfolk.in/cdn/shop/files/Cloud_Coal_Collection.jpg?v=1746078017&width=2048"
+                alt="Shirts"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <small class="mt-2 text-sm text-gray-300 group-hover:text-[#D4AF37]"
+              >Shirts</small
+            >
+          </a>
+
+          <!-- Hoodies -->
+          <a
+            href="products.html?category=hoodie"
+            class="group flex flex-col items-center text-center cursor-pointer transition-transform hover:scale-105"
+          >
+            <div
+              class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#D4AF37] shadow-md"
+            >
+              <img
+                src="https://veirdo.in/cdn/shop/files/Anger_Green_Oversized_Pocket_Graphic_Printed_Hoodie.jpg?v=1754544896"
+                alt="Hoodies"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <small class="mt-2 text-sm text-gray-300 group-hover:text-[#D4AF37]"
+              >Hoodies</small
+            >
+          </a>
+
+          <!-- Sweatshirts -->
+          <a
+            href="products.html?category=sweatshirt"
+            class="group flex flex-col items-center text-center cursor-pointer transition-transform hover:scale-105"
+          >
+            <div
+              class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#D4AF37] shadow-md"
+            >
+              <img
+                src="https://cdn.shopify.com/s/files/1/0623/7916/3734/files/70e889af_b91a_700x.jpg?v=1757611986"
+                alt="Sweatshirts"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <small class="mt-2 text-sm text-gray-300 group-hover:text-[#D4AF37]"
+              >Sweatshirts</small
+            >
+          </a>
+
+          <!-- Oversized T’s -->
+          <a
+            href="products.html?category=oversized"
+            class="group flex flex-col items-center text-center cursor-pointer transition-transform hover:scale-105"
+          >
+            <div
+              class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#D4AF37] shadow-md"
+            >
+              <img
+                src="https://i0.wp.com/printrove.com/wp-content/uploads/2025/07/front-6843e633117d7-Ash_Grey_M_Premium_Oversized_T-shirt.jpg?fit=1500%2C1500&ssl=1"
+                alt="Oversized T’s"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <small class="mt-2 text-sm text-gray-300 group-hover:text-[#D4AF37]"
+              >Oversized T’s</small
+            >
+          </a>
         </div>
+      </section>
+
+      <!-- FILTER BAR -->
+      <!-- FILTER BAR -->
+      <section class="mt-6 flex flex-wrap gap-3 justify-between items-center">
+        <!-- Left filters -->
+        <div class="flex gap-3 flex-wrap">
+          <div
+            class="panel px-2 py-1 rounded-md text-sm bg-white text-gray-800 flex items-center"
+          >
+            Category:
+            <select
+              id="filterCategory"
+              class="bg-transparent outline-none ml-1 text-sm text-gray-800"
+            >
+              <option value="">All</option>
+              <option value="tshirt">T-Shirts</option>
+              <option value="shirt">Shirts</option>
+              <option value="jeans">Jeans</option>
+              <option value="chinos">Chinos</option>
+              <option value="accessory">Accessory</option>
+            </select>
+          </div>
+
+          <div
+            class="panel px-2 py-1 rounded-md text-sm bg-white text-gray-800 flex items-center"
+          >
+            Sort:
+            <select
+              id="sortBy"
+              class="bg-transparent outline-none ml-1 text-sm text-gray-800"
+            >
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low → High</option>
+              <option value="price-desc">Price: High → Low</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Right filters -->
+        <div class="flex gap-3 flex-wrap items-center">
+          <div class="text-sm text-gray-300">
+            Showing <span id="showCount">0</span> products
+          </div>
+          <div
+            class="panel px-2 py-1 rounded-md text-sm bg-white text-gray-800 flex items-center"
+          >
+            Price:
+            <select
+              id="priceFilter"
+              class="bg-transparent ml-1 text-gray-800 text-sm"
+            >
+              <option value="any">All</option>
+              <option value="0-699">Under ₹699</option>
+              <option value="700-999">₹700 - ₹999</option>
+              <option value="1000-9999">₹1000+</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTS GRID -->
+      <div
+        id="productsGrid"
+        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 mt-4"
+      ></div>
+
+      <script>
+        const productsGrid = document.getElementById("productsGrid");
+        const showCount = document.getElementById("showCount");
+        const categoryFilter = document.getElementById("filterCategory");
+        const priceFilter = document.getElementById("priceFilter");
+        const sortBy = document.getElementById("sortBy");
+
+        let allProducts = [];
+
+        // ✅ Fetch products from backend
+        async function fetchProducts() {
+          try {
+            const res = await fetch(`${API_BASE}/api/products`);
+            allProducts = await res.json();
+            renderProducts();
+          } catch (err) {
+            console.error("Error fetching products:", err);
+          }
+        }
+
+        // ✅ Render products dynamically
+        function renderProducts() {
+          let filtered = [...allProducts];
+
+          // Filter by category
+          const cat = categoryFilter.value;
+          if (cat)
+            filtered = filtered.filter(
+              (p) => p.category.toLowerCase() === cat.toLowerCase()
+            );
+
+          // Filter by price
+          const price = priceFilter.value;
+          if (price !== "any") {
+            const [min, max] = price.split("-").map(Number);
+            filtered = filtered.filter(
+              (p) => p.price >= min && (max ? p.price <= max : true)
+            );
+          }
+
+          // Sort
+          if (sortBy.value === "price-asc")
+            filtered.sort((a, b) => a.price - b.price);
+          if (sortBy.value === "price-desc")
+            filtered.sort((a, b) => b.price - a.price);
+
+          // Update count
+          showCount.textContent = filtered.length;
+
+          // Render
+          productsGrid.innerHTML = filtered.length
+            ? filtered
+                .map(
+                  (p) => `
+        <div class="glass rounded-xl overflow-hidden hover:scale-105 transition transform duration-300 flex flex-col justify-between min-h-[420px]">
+          <a href="product.html?id=${p._id}">
+          <img src="${p.img}" alt="${
+                    p.name
+                  }" class="w-full h-56 object-cover" />
+          </a>
+          <div class="p-3">
+         
+            <h3 class="font-semibold text-lg">${p.name}</h3>
+            <p class="text-gray-400 text-sm line-clamp-2">${p.desc}</p>
+            <div class="flex items-center justify-between mt-2">
+              <span class="text-yellow-400 font-bold text-lg">₹${p.price}</span>
+              ${
+                p.old
+                  ? `<span class="text-gray-500 line-through text-sm">₹${p.old}</span>`
+                  : ""
+              }
+            </div>
+          </div>
+          <button
+    class="addToCartBtn mt-2 w-full py-2 bg-yellow-400 hover:bg-yellow-500 rounded-md font-semibold"
+    data-id="${p._id}"
+  >
+    Add to Cart
+  </button>
+        </div>
+      `
+                )
+                .join("")
+            : `<p class="text-gray-400 col-span-full text-center">No products found.</p>`;
+        }
+
+        // ✅ Event listeners
+        categoryFilter.addEventListener("change", renderProducts);
+        priceFilter.addEventListener("change", renderProducts);
+        sortBy.addEventListener("change", renderProducts);
+
+        // Initial load
+        fetchProducts();
+      </script>
+
+      <script>
+        const API_CART = `${API_BASE}/api/cart`;
+
+        // 🧭 Fetch user's cart from DB on page load
+        async function fetchCart() {
+          const token = localStorage.getItem("token");
+          if (!token) return;
+
+          try {
+            const res = await fetch(API_CART, {
+              headers: { Authorization: `Bearer ${token}` },
+            });
+
+            const data = await res.json();
+
+            if (res.ok && data.cart) {
+              updateCartUI(data.cart);
+            } else {
+              updateCartUI({ items: [] });
+            }
+          } catch (err) {
+            console.error("Fetch cart error:", err);
+            updateCartUI({ items: [] });
+          }
+        }
+
+        // ➕ Add product to cart (database-backed)
+        async function addToCart(productId, quantity = 1) {
+          const token = localStorage.getItem("token");
+          if (!token)
+            return toast("⚠️ Please login to continue", { type: "warning" });
+
+          try {
+            const res = await fetch(API_CART, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ productId, quantity }),
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+              updateCartUI(data.cart);
+              toast("✅ Product added to cart!", { type: "success" });
+            } else {
+              toast(data.message || "❌ Failed to add to cart", {
+                type: "error",
+              });
+            }
+          } catch (err) {
+            console.error("Add to cart error:", err);
+            toast("⚠️ Server error: Failed to add to cart", { type: "error" });
+          }
+        }
+
+        // ❌ Remove product from cart (database-backed)
+        async function removeFromCart(productId) {
+          const token = localStorage.getItem("token");
+          if (!token)
+            return toast("⚠️ Please login to remove items", {
+              type: "warning",
+            });
+
+          try {
+            const res = await fetch(`${API_CART}/${productId}`, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+              console.error("Remove cart item error:", data);
+              return toast(data.message || "❌ Failed to remove item", {
+                type: "error",
+              });
+            }
+
+            if (data.cart && data.cart.items) {
+              updateCartUI(data.cart);
+              toast("🗑️ Item removed from cart", { type: "success" });
+            } else {
+              updateCartUI({ items: [] });
+              toast("🗑️ Item removed. Cart is now empty", { type: "info" });
+            }
+          } catch (err) {
+            console.error("Remove item error:", err);
+            toast("⚠️ Server error: Unable to remove item", { type: "error" });
+          }
+        }
+
+        // 🧹 Clear the entire cart (database-backed)
+        async function clearCart() {
+          const token = localStorage.getItem("token");
+          if (!token)
+            return toast("⚠️ Please login to clear your cart", {
+              type: "warning",
+            });
+
+          if (!confirm("Are you sure you want to clear your cart?")) return;
+
+          try {
+            const res = await fetch(API_CART, {
+              method: "DELETE",
+              headers: { Authorization: `Bearer ${token}` },
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+              return toast(data.message || "❌ Failed to clear cart", {
+                type: "error",
+              });
+            }
+
+            updateCartUI(data.cart);
+            toast("🧹 Cart cleared successfully!", { type: "success" });
+          } catch (err) {
+            console.error("Clear cart error:", err);
+            toast("⚠️ Server error: Unable to clear cart", { type: "error" });
+          }
+        }
+
+        // 🛒 Update cart sidebar UI + badge count
+        function updateCartUI(cart) {
+          const container = document.getElementById("cartItems");
+          const subtotalEl = document.getElementById("cartSub");
+          const checkoutBtn = document.getElementById("checkoutBtn");
+          const cartCountEl = document.getElementById("cartCount");
+
+          if (!cart || !cart.items || cart.items.length === 0) {
+            if (container)
+              container.innerHTML = `<p class="text-gray-400 text-center">Cart is empty</p>`;
+            if (subtotalEl) subtotalEl.textContent = "₹0";
+            if (checkoutBtn) checkoutBtn.disabled = true;
+            if (cartCountEl) cartCountEl.textContent = "0";
+            return;
+          }
+
+          if (checkoutBtn) checkoutBtn.disabled = false;
+
+          if (cartCountEl) {
+            const totalItems = cart.items.reduce(
+              (sum, item) => sum + item.quantity,
+              0
+            );
+            cartCountEl.textContent = totalItems;
+          }
+
+          let subtotal = 0;
+
+          if (container) {
+            container.innerHTML = cart.items
+              .map(
+                (item) => `
+        <div class="flex items-center justify-between mb-3" data-id="${
+          item.product._id
+        }">
+          <div class="flex items-center gap-2">
+            <img src="${
+              item.product.img
+            }" class="w-12 h-12 object-cover rounded" />
+            <div>
+              <h5 class="font-semibold text-sm">${item.product.name}</h5>
+              <p class="text-gray-400 text-xs">Qty: ${item.quantity}</p>
+            </div>
+          </div>
+          <div class="flex flex-col items-end gap-1">
+            <span class="font-semibold">₹${(
+              item.product.price * item.quantity
+            ).toFixed(2)}</span>
+            <button class="removeItemBtn text-red-500 text-xs hover:underline">Remove</button>
+          </div>
+        </div>
+      `
+              )
+              .join("");
+          }
+
+          subtotal = cart.items.reduce(
+            (sum, item) => sum + item.product.price * item.quantity,
+            0
+          );
+          if (subtotalEl) subtotalEl.textContent = `₹${subtotal.toFixed(2)}`;
+
+          if (container) {
+            container.querySelectorAll(".removeItemBtn").forEach((btn) => {
+              btn.onclick = () => {
+                const productId = btn.closest("[data-id]").dataset.id;
+                removeFromCart(productId);
+              };
+            });
+          }
+        }
+
+        // 🛍️ Add to Cart button listener
+        document.addEventListener("click", (e) => {
+          if (e.target.classList.contains("addToCartBtn")) {
+            addToCart(e.target.dataset.id, 1);
+          }
+        });
+
+        // 🧹 Attach Clear Cart button and fetch cart on load
+        document.addEventListener("DOMContentLoaded", () => {
+          const clearBtn = document.getElementById("clearCart");
+          if (clearBtn) clearBtn.addEventListener("click", clearCart);
+          fetchCart();
+        });
+      </script>
+
+      <!-- OFFERS / BUNDLES -->
+      <!-- <section id="offers" class="mt-10 grid md:grid-cols-3 gap-4">
+      <div class="panel p-5 rounded-xl text-center">
+        <div class="text-sm text-gray-400">T-shirt + Jeans Combo</div>
+        <div class="text-2xl font-bold gold-text mt-1">₹2,299</div>
       </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section id="testimonials" class="mt-10">
-      <div class="grid md:grid-cols-3 gap-4">
-        <div class="panel p-6 rounded-xl">
-          <div class="text-6xl text-white/10">“</div>
-          <div class="mt-2">The premium phone was worth every rupee — the packaging and delivery were superb.</div>
-          <div class="mt-4 text-sm text-gray-400">— Rohan</div>
-        </div>
-        <div class="panel p-6 rounded-xl">
-          <div class="text-6xl text-white/10">“</div>
-          <div class="mt-2">Customer service helped me through setup and warranty registration.</div>
-          <div class="mt-4 text-sm text-gray-400">— Priya</div>
-        </div>
-        <div class="panel p-6 rounded-xl">
-          <div class="text-6xl text-white/10">“</div>
-          <div class="mt-2">Fast shipping and genuine accessories. Highly trustworthy.</div>
-          <div class="mt-4 text-sm text-gray-400">— Salman</div>
-        </div>
+      <div class="panel p-5 rounded-xl text-center">
+        <div class="text-sm text-gray-400">Shirt + Chinos Set</div>
+        <div class="text-2xl font-bold gold-text mt-1">₹2,699</div>
       </div>
-    </section>
-
-    <!-- NEWSLETTER -->
-    <section class="mt-10 panel p-6 rounded-xl">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <div class="font-semibold">Join our newsletter</div>
-          <div class="text-sm text-gray-300">Get early access to drops and exclusive offers.</div>
-        </div>
-        <form id="newsletterForm" class="flex gap-2">
-          <input id="newsletterEmail" type="email" required placeholder="Your email" class="p-2 rounded-md bg-transparent border border-white/10" />
-          <button class="gold-btn px-4 py-2 rounded-md">Subscribe</button>
-        </form>
+      <div class="panel p-5 rounded-xl text-center">
+        <div class="text-sm text-gray-400">Hoodie + Cap Bundle</div>
+        <div class="text-2xl font-bold gold-text mt-1">₹2,499</div>
       </div>
-    </section>
+    </section> -->
 
-    <!-- FOOTER -->
-    <footer class="max-w-screen-xl mx-auto px-4 mt-12 pb-12 text-gray-400">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div>
-          <div class="text-lg font-semibold gold-text">Vibrant Flight</div>
-          <div class="text-sm italic">Elevate Your Journey</div>
-          <p class="text-sm mt-3 text-gray-400">Premium gadgets & accessories — curated essentials & seasonal drops.</p>
-        </div>
-        <div>
-          <div class="font-semibold mb-2">Customer</div>
-          <ul class="text-sm space-y-1">
-            <li>Track Order</li>
-            <li>Returns & Refund</li>
-            <li>Shipping policy</li>
-            <li>Warranty</li>
+      <!-- ABOUT & FEATURES -->
+      <section id="about" class="mt-10 grid md:grid-cols-2 gap-6">
+        <div class="panel p-6 rounded-2xl">
+          <h3 class="text-2xl font-bold gold-text">About Vibrant Flight</h3>
+          <p class="text-gray-300 mt-2">
+            We source premium clothing and accessories with a focus on design,
+            durability and user experience.
+          </p>
+          <ul class="mt-4 space-y-2 text-sm text-gray-300">
+            <li>• Official store warranty</li>
+            <li>• Premium packaging</li>
+            <li>• 7-day return policy</li>
           </ul>
         </div>
-        <div>
-          <div class="font-semibold mb-2">Contact</div>
-          <div class="text-sm">hello@vibrantflight.com</div>
-          <div class="mt-2 text-sm">Follow</div>
-          <div class="flex gap-2 mt-2">
-            <div class="panel w-10 h-10 flex items-center justify-center rounded-full">ig</div>
-            <div class="panel w-10 h-10 flex items-center justify-center rounded-full">fb</div>
-            <div class="panel w-10 h-10 flex items-center justify-center rounded-full">yt</div>
+        <div class="panel p-6 rounded-2xl">
+          <h4 class="text-xl font-semibold gold-text">Why choose us</h4>
+          <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="panel p-3 rounded-lg">
+              <div class="font-semibold">Genuine Products</div>
+              <div class="text-xs text-gray-300">
+                Direct from verified vendors.
+              </div>
+            </div>
+            <div class="panel p-3 rounded-lg">
+              <div class="font-semibold">Secure Payments</div>
+              <div class="text-xs text-gray-300">
+                Encrypted payments & multiple options.
+              </div>
+            </div>
+            <div class="panel p-3 rounded-lg">
+              <div class="font-semibold">Fast Delivery</div>
+              <div class="text-xs text-gray-300">
+                Priority shipping available.
+              </div>
+            </div>
+            <div class="panel p-3 rounded-lg">
+              <div class="font-semibold">Customer Support</div>
+              <div class="text-xs text-gray-300">
+                24/7 support for premium orders.
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="mt-8 text-xs text-gray-500 text-center">© 2025 Vibrant Flight — All rights reserved</div>
-    </footer>
-  </main>
+      </section>
 
-  <!-- CART SIDEBAR -->
-  <aside id="cartSidebar" class="fixed right-0 top-0 h-full w-[92vw] sm:w-96 transform translate-x-full transition z-50" aria-hidden="true">
-    <div class="h-full panel p-5 flex flex-col">
-      <div class="flex items-center justify-between">
-        <h4 class="font-semibold">Your Cart</h4>
-        <button id="closeCart" class="text-gray-300">✕</button>
-      </div>
-      <div id="cartItems" class="mt-4 flex-1 overflow-auto no-scrollbar"></div>
-      <div class="mt-4 border-t pt-4">
+      <!-- CONTACT SECTION -->
+      <section id="anything" class="mt-12 panel p-8 rounded-2xl">
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold gold-text">Anything Else?</h3>
+          <p class="text-gray-300">Let us know & we’ll assist you</p>
+        </div>
+        <form id="anythingForm" class="max-w-xl mx-auto grid gap-4">
+          <input
+            name="name"
+            type="text"
+            class="p-3 rounded-md bg-transparent border border-white/10 text-sm"
+            placeholder="Your Name"
+            required
+          />
+          <input
+            name="email"
+            type="email"
+            class="p-3 rounded-md bg-transparent border border-white/10 text-sm"
+            placeholder="Your Email"
+            required
+          />
+          <input
+            name="phone"
+            type="tel"
+            class="p-3 rounded-md bg-transparent border border-white/10 text-sm"
+            placeholder="Phone (optional)"
+          />
+          <textarea
+            name="message"
+            rows="3"
+            class="p-3 rounded-md bg-transparent border border-white/10 text-sm"
+            placeholder="Your Message"
+            required
+          ></textarea>
+          <button type="submit" class="gold-btn py-2 rounded-md">
+            Send Message
+          </button>
+        </form>
+      </section>
+
+      <script>
+        const CONTACT_API = `${API_BASE}/api/contact`;
+
+        document
+          .getElementById("anythingForm")
+          .addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = {
+              name: form.name.value.trim(),
+              email: form.email.value.trim(),
+              phone: form.phone.value.trim(),
+              message: form.message.value.trim(),
+            };
+
+            if (!formData.name || !formData.email || !formData.message) {
+              return toast("Please fill in all required fields.", {
+                type: "warning",
+              });
+            }
+
+            try {
+              const res = await fetch(CONTACT_API, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+              });
+
+              const data = await res.json();
+
+              if (!res.ok) {
+                return toast(data.message || "Failed to send message", {
+                  type: "info",
+                });
+              }
+
+              toast("✅ Message sent successfully!", { type: "success" });
+              form.reset();
+            } catch (err) {
+              console.error("Send message error:", err);
+              toast("❌ Server error. Please try again later.", {
+                type: "error",
+              });
+            }
+          });
+      </script>
+
+      <!-- TESTIMONIALS -->
+      <section id="testimonials" class="mt-10">
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="panel p-6 rounded-xl">
+            <div class="text-6xl text-white/10">“</div>
+            <div class="mt-2">
+              The premium cloth was worth every rupee — packaging & delivery
+              were superb.
+            </div>
+            <div class="mt-4 text-sm text-gray-400">— Rohan</div>
+          </div>
+          <div class="panel p-6 rounded-xl">
+            <div class="text-6xl text-white/10">“</div>
+            <div class="mt-2">
+              Customer service helped me through setup and warranty
+              registration.
+            </div>
+            <div class="mt-4 text-sm text-gray-400">— Priya</div>
+          </div>
+          <div class="panel p-6 rounded-xl">
+            <div class="text-6xl text-white/10">“</div>
+            <div class="mt-2">
+              Fast shipping and genuine accessories. Highly trustworthy.
+            </div>
+            <div class="mt-4 text-sm text-gray-400">— Salman</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEWSLETTER -->
+      <section class="mt-10 panel p-6 rounded-xl">
+        <div
+          class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+        >
+          <div>
+            <div class="font-semibold">Join our newsletter</div>
+            <div class="text-sm text-gray-300">
+              Get early access to drops & exclusive offers.
+            </div>
+          </div>
+          <form id="newsletterForm" class="flex gap-2">
+            <input
+              id="newsletterEmail"
+              type="email"
+              required
+              placeholder="Your email"
+              class="p-2 rounded-md bg-transparent border border-white/10"
+            />
+            <button class="gold-btn px-4 py-2 rounded-md">Subscribe</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="max-w-screen-xl mx-auto px-4 mt-12 pb-12 text-gray-400">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <div class="text-lg font-semibold gold-text">Vibrant Flight</div>
+            <div class="text-sm italic">Elevate Your Journey</div>
+            <p class="text-sm mt-3 text-gray-400">
+              Premium clothing & accessories — curated essentials & seasonal
+              drops.
+            </p>
+          </div>
+          <div>
+            <div class="font-semibold mb-2">Customer</div>
+            <ul class="text-sm space-y-1">
+              <li><a href="#" class="hover:underline">Track Order</a></li>
+              <li><a href="#" class="hover:underline">Returns & Refund</a></li>
+              <li><a href="#" class="hover:underline">Shipping Policy</a></li>
+              <li><a href="#" class="hover:underline">Warranty</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold mb-2">Contact</div>
+            <div class="text-sm">hello@vibrantflight.com</div>
+            <div class="mt-2 text-sm">Follow</div>
+            <div class="flex gap-2 mt-2">
+              <div
+                class="panel w-10 h-10 flex items-center justify-center rounded-full"
+              >
+                ig
+              </div>
+              <div
+                class="panel w-10 h-10 flex items-center justify-center rounded-full"
+              >
+                fb
+              </div>
+              <div
+                class="panel w-10 h-10 flex items-center justify-center rounded-full"
+              >
+                yt
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 text-xs text-gray-500 text-center">
+          © 2025 Vibrant Flight — All rights reserved ·
+          <a href="#" class="hover:underline">Privacy Policy</a> ·
+          <a href="#" class="hover:underline">Refund Policy</a> ·
+          <a href="#" class="hover:underline">Terms & Conditions</a>
+        </div>
+      </footer>
+    </main>
+
+    <!-- ✅ Single Cart Sidebar -->
+    <aside
+      id="cartSidebar"
+      class="fixed right-0 top-0 h-full w-[92vw] sm:w-96 transform translate-x-full transition z-50"
+      aria-hidden="true"
+    >
+      <div class="h-full panel p-5 flex flex-col">
         <div class="flex items-center justify-between">
-          <div class="text-sm text-gray-400">Subtotal</div>
-          <div id="cartSub" class="font-semibold">₹0</div>
+          <h4 class="font-semibold">Your Cart</h4>
+          <button id="closeCart" class="text-gray-300">✕</button>
         </div>
-        <div class="mt-3 grid grid-cols-2 gap-2">
-          <button id="checkoutBtn" class="gold-btn py-2 rounded-md">Checkout</button>
-          <button id="clearCart" class="panel py-2 rounded-md">Clear</button>
-        </div>
-      </div>
-    </div>
-  </aside>
-
-  <!-- QUICK VIEW MODAL -->
-  <div id="quickModal" class="hidden fixed inset-0 z-60 flex items-center justify-center modal-backdrop p-4" aria-hidden="true">
-    <div class="panel w-full max-w-3xl p-6 rounded-xl relative modal-inner" role="dialog" aria-modal="true">
-      <button onclick="closeQuick()" class="absolute top-4 right-6 text-gray-300">×</button>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div><img id="quickImg" src="" class="w-full h-72 object-cover rounded-lg" alt="product image" /></div>
-        <div>
-          <h3 id="quickName" class="text-2xl font-semibold"></h3>
-          <div class="flex items-center gap-3 mt-2">
-            <div id="quickPrice" class="text-xl font-bold gold-text"></div>
-            <div id="quickOld" class="text-sm line-through text-gray-400"></div>
-            <div id="quickStock" class="text-sm panel px-2 py-1 rounded-full">In stock</div>
+        <div
+          id="cartItems"
+          class="mt-4 flex-1 overflow-auto no-scrollbar"
+        ></div>
+        <div class="mt-4 border-t pt-4">
+          <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-400">Subtotal</div>
+            <div id="cartSub" class="font-semibold">₹0</div>
           </div>
-          <p id="quickDesc" class="mt-3 text-sm text-gray-300"></p>
-          <div class="mt-4 flex items-center gap-2">
-            <input id="quickQty" type="number" value="1" min="1" class="w-20 p-2 rounded-md bg-[rgba(255,255,255,0.02)]" />
-            <button id="quickAdd" class="gold-btn px-4 py-2 rounded-md">Add to Cart</button>
+          <div class="mt-3 grid grid-cols-2 gap-2">
+            <button id="checkoutBtn" class="gold-btn py-2 rounded-md">
+              Checkout
+            </button>
+            <button id="clearCart" class="panel py-2 rounded-md">Clear</button>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </aside>
 
-  <!-- AUTH MODAL -->
-  <div id="authModal" class="hidden fixed inset-0 z-70 flex items-start md:items-center justify-center modal-backdrop p-4" aria-hidden="true">
-    <div class="panel p-6 w-full max-w-md rounded-xl relative modal-inner" role="dialog" aria-modal="true">
-      <button onclick="closeAuth()" class="absolute top-3 right-4 text-gray-300">×</button>
-      <div id="authInner"></div>
-    </div>
-  </div>
+    <!-- ✅ Include core JS files -->
+    <script src="/js/products.js"></script>
+    <script src="/js/script.js"></script>
 
-  <!-- TRACK MODAL -->
-  <div id="trackModal" class="hidden fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300" aria-hidden="true">
-    <div class="panel w-11/12 sm:w-96 p-6 relative modal-inner" role="dialog" aria-modal="true">
-      <button id="closeTrack" class="absolute top-3 right-3 text-gray-300 hover:text-white transition text-xl font-bold">&times;</button>
+    <!-- ✅ Hero Carousel Logic -->
+    <script>
+      const slides = document.querySelectorAll("#heroCarousel .carousel-slide");
+      const dots = document.querySelectorAll("#carouselDots .dot");
+      let currentSlide = 0,
+        slideInterval;
 
-      <h2 class="text-2xl font-semibold mb-4 text-center gold-text">Track Your Order</h2>
-      <form id="trackForm" class="space-y-4">
-        <div>
-          <label class="block text-sm mb-1">Order ID</label>
-          <input id="trackOrderId" type="text" placeholder="Enter your order ID" class="w-full p-2 rounded-md bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-1 focus:ring-yellow-500" />
-        </div>
-        <div>
-          <label class="block text-sm mb-1">Email</label>
-          <input id="trackEmail" type="email" placeholder="Enter your email" class="w-full p-2 rounded-md bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-1 focus:ring-yellow-500" />
-        </div>
-        <button type="submit" class="gold-btn w-full py-2 mt-3 rounded-md font-semibold text-black hover:opacity-90 transition">Track Order</button>
-      </form>
-    </div>
-  </div>
-   <script src="../js/script.js"></script>
-</body>
+      function showSlide(index) {
+        slides.forEach((s, i) => s.classList.toggle("active", i === index));
+        dots.forEach((d, i) => d.classList.toggle("bg-[#D4AF37]", i === index));
+        currentSlide = index;
+      }
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+      function startAuto() {
+        slideInterval = setInterval(nextSlide, 4000);
+      }
+      function restartAuto() {
+        clearInterval(slideInterval);
+        startAuto();
+      }
+      dots.forEach((dot, i) =>
+        dot.addEventListener("click", () => {
+          showSlide(i);
+          restartAuto();
+        })
+      );
+      showSlide(currentSlide);
+      startAuto();
+    </script>
+
+    <!-- ✅ Render Product Grid (loads from localStorage) -->
+    <!-- <script>
+    const grid = document.getElementById('productsGrid');
+    let PRODUCTS = JSON.parse(localStorage.getItem('vf_products')) || [];
+
+    function renderGrid() {
+      grid.innerHTML = '';
+      if (!PRODUCTS || PRODUCTS.length === 0) {
+        grid.innerHTML = '<p class="text-gray-400 col-span-full text-center">No products found.</p>';
+        return;
+      }
+
+      PRODUCTS.forEach(p => {
+        const card = document.createElement('a');
+        card.href = `product.html?id=${encodeURIComponent(p.id)}`;
+        card.className = 'block rounded-xl overflow-hidden shadow hover:scale-105 transition';
+        card.innerHTML = `
+          <img src="${p.img}" alt="${p.name}" class="w-full h-56 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">${p.name}</h3>
+            <p class="text-gray-400 text-sm line-clamp-2">${p.desc}</p>
+            <div class="flex items-center justify-between mt-2">
+              <span class="text-xl font-bold text-yellow-600">₹${p.price}</span>
+            </div>
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
+
+    renderGrid();
+  </script> -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // ===== MENU TOGGLE =====
+        const menuBtn = document.getElementById("menuBtn");
+        const closeMenu = document.getElementById("closeMenu");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        menuBtn?.addEventListener("click", () => {
+          mobileMenu.classList.remove("translate-x-full");
+        });
+        closeMenu?.addEventListener("click", () => {
+          mobileMenu.classList.add("translate-x-full");
+        });
+        document.addEventListener("click", (e) => {
+          if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+            mobileMenu.classList.add("translate-x-full");
+          }
+        });
+
+        // ===== CART SIDEBAR TOGGLE =====
+        const cartBtn = document.getElementById("cartBtn");
+        const cartSidebar = document.getElementById("cartSidebar");
+        const closeCart = document.getElementById("closeCart");
+
+        cartBtn?.addEventListener("click", () => {
+          cartSidebar.classList.remove("translate-x-full");
+        });
+        closeCart?.addEventListener("click", () => {
+          cartSidebar.classList.add("translate-x-full");
+        });
+        document.addEventListener("click", (e) => {
+          if (!cartSidebar.contains(e.target) && !cartBtn.contains(e.target)) {
+            cartSidebar.classList.add("translate-x-full");
+          }
+        });
+
+        // ===== SEARCH TOGGLE (optional) =====
+        const searchBtn = document.getElementById("searchBtn");
+        const searchModal = document.getElementById("searchModal");
+        const closeSearch = document.getElementById("closeSearch");
+
+        searchBtn?.addEventListener("click", () => {
+          searchModal?.classList.remove("hidden");
+        });
+        closeSearch?.addEventListener("click", () => {
+          searchModal?.classList.add("hidden");
+        });
+      });
+    </script>
+    <!-- include toast script AFTER the button -->
+    <script>
+      // function toast(msg, opts = {}) {
+      //   const { duration = 2200 } = opts;
+      //   const containerId = "vf_toast_container";
+      //   let container = document.getElementById(containerId);
+      //   if (!container) {
+      //     container = document.createElement("div");
+      //     container.id = containerId;
+      //     container.style.cssText =
+      //       "position:fixed;z-index:99999;left:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none";
+      //     document.body.appendChild(container);
+      //   }
+      //   const t = document.createElement("div");
+      //   t.textContent = msg;
+      //   t.style.cssText =
+      //     "background:rgba(0,0,0,0.8);color:white;padding:10px 14px;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.5);pointer-events:auto;font-weight:500;";
+      //   container.appendChild(t);
+      //   requestAnimationFrame(() => (t.style.opacity = "1"));
+      //   setTimeout(() => {
+      //     t.style.transition = "opacity .25s ease, transform .25s ease";
+      //     t.style.opacity = "0";
+      //     t.style.transform = "translateY(8px)";
+      //     setTimeout(() => t.remove(), 300);
+      //   }, duration);
+      // }
+      function toast(msg, opts = {}) {
+        const { duration = 2200, type = "info" } = opts;
+        const colors = {
+          success: "linear-gradient(90deg,#4CAF50,#2E7D32)",
+          error: "linear-gradient(90deg,#F44336,#C62828)",
+          warning: "linear-gradient(90deg,#FF9800,#E65100)",
+          info: "rgba(0,0,0,0.8)",
+        };
+        const bg = colors[type] || colors.info;
+
+        const containerId = "vf_toast_container";
+        let container = document.getElementById(containerId);
+        if (!container) {
+          container = document.createElement("div");
+          container.id = containerId;
+          container.style.cssText =
+            "position:fixed;z-index:99999;left:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none";
+          document.body.appendChild(container);
+        }
+
+        const t = document.createElement("div");
+        t.textContent = msg;
+        t.style.cssText = `background:${bg};color:white;padding:10px 14px;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.5);pointer-events:auto;font-weight:500;opacity:0;transition:opacity .25s ease, transform .25s ease;`;
+        container.appendChild(t);
+
+        requestAnimationFrame(() => {
+          t.style.opacity = "1";
+          t.style.transform = "translateY(0)";
+        });
+
+        setTimeout(() => {
+          t.style.opacity = "0";
+          t.style.transform = "translateY(8px)";
+          setTimeout(() => t.remove(), 300);
+        }, duration);
+      }
+    </script>
+  </body>
 </html>
